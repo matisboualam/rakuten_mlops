@@ -1,3 +1,3 @@
 docker-compose up -d
 
-docker exec -it tensorflow_sandbox /bin/bash
+docker exec -it dev /bin/bash

@@ -2,8 +2,8 @@ version: '3.8'
 
 services:
   tensorflow:
-    build: .
-    container_name: tensorflow_sandbox
+    build: docker_services/dev/
+    container_name: dev
     ports:
       - "8000:8000"
     volumes:
