@@ -5,8 +5,11 @@ services:
     build: docker_services/dev/
     container_name: dev
     ports:
-      - "8000:8000"
+      - "8000:8000"  # Host port 8000 mapped to container port 8000
+      - "8001:8001"  # Host port 8001 mapped to container port 8001
     volumes:
-      - .:/workspace
+      - .:/workspace  # Mount the current directory into the container
     stdin_open: true  # Keep STDIN open for interactive sessions
     tty: true         # Allocate a pseudo-TTY for the container
+    command: >
+      jupyter lab --allow-root --port=8000 --no-browser --ip=0.0.0.0 --NotebookApp.token='' --NotebookApp.password='' --ServerApp.port_retries=0
