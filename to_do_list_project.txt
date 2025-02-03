@@ -1,0 +1,27 @@
+
+PROCESSING:
+
+- notebook d'inspection de la data propre
+- script concaténation x_data, y_data -> data: columns = ['text','img_path','labels']
+- repartition données d'entrainement, validation et non vue
+- fichier test + logs d'inspection du processing de la data: nb_product, text manquant, path manquant, data de type str...
+- suivi dvc/dagshub des csv : x_data, y_data, data, data_train, data_validation, data_unseen, poids des modèles
+- conteneur de preprocessing
+
+MODELISATION:
+
+- conteneur modèle
+- script d'inférence
+- DataLoader appliquant le pretraitement avant entrainement:
+	- img
+	- txt
+- fichier test data loader
+- entrainement en local (1 epoch)
+- suivi MLFLOW des paramètres d'entrainement + métriques + pondération par accuracy
+
+INTERACTION:
+
+- Fast-API init:
+	- définition des entrypoints et de leurs exigences
+	- connexion des scripts aux entrypoints
+	- UI?

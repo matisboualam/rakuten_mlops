@@ -13,3 +13,12 @@ services:
     tty: true         # Allocate a pseudo-TTY for the container
     command: >
       jupyter lab --allow-root --port=8000 --no-browser --ip=0.0.0.0 --NotebookApp.token='' --NotebookApp.password='' --ServerApp.port_retries=0
+  preprocessing:
+    build: docker_services/preprocessing/
+    container_name: preprocessing
+    volumes:
+      - ./src:/workdir/src # Mount the current directory into the container
+      - ./data:/workdir/data  # Mount the data directory into the container
+    stdin_open: true  # Keep STDIN open for interactive sessions
+    tty: true         # Allocate a pseudo-TTY for the container
+    

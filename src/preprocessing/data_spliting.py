@@ -1,4 +1,5 @@
 import pandas as pd
+from format_csv import format_csv
 from sklearn.model_selection import train_test_split
 
 # Load your data from CSV files
@@ -16,6 +17,11 @@ train_data, unseen_data = train_test_split(data, test_size=0.7, random_state=42)
 
 # Now split the train_data into training (80%) and validation (20%)
 train_data, val_data = train_test_split(train_data, test_size=0.2, random_state=42)
+
+# format the data and save the splits to new CSV files
+train_data = format_csv(df=train_data)
+val_data = format_csv(df=val_data)
+unseen_data = format_csv(df=unseen_data)
 
 # Save the resulting splits to new CSV files
 train_data.to_csv('data/processed/train_data.csv', index=False)
