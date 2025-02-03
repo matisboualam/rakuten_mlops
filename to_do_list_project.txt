@@ -2,11 +2,11 @@
 PROCESSING:
 
 - notebook d'inspection de la data propre
-- script concaténation x_data, y_data -> data: columns = ['text','img_path','labels']
-- repartition données d'entrainement, validation et non vue
-- fichier test + logs d'inspection du processing de la data: nb_product, text manquant, path manquant, data de type str...
-- suivi dvc/dagshub des csv : x_data, y_data, data, data_train, data_validation, data_unseen, poids des modèles
-- conteneur de preprocessing
+X- script concaténation x_data, y_data -> data: columns = ['text','img_path','labels']
+X- repartition données d'entrainement, validation et non vue
+X- fichier test + logs d'inspection du processing de la data: nb_product, text manquant, path manquant, data de type str...
+X- suivi dvc/dagshub des csv : x_data, y_data, data, data_train, data_validation, data_unseen, poids des modèles
+X- conteneur de preprocessing  
 
 MODELISATION:
 
