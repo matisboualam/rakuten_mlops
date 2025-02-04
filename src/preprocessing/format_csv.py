@@ -52,7 +52,7 @@ def format_csv(csv_path=None, df=None):
 
         # Check and process missing columns
         if "image_path" not in df.columns and {"imageid", "productid"}.issubset(df.columns):
-            df["image_path"] = df.apply(lambda row: f"data/raw/img/image_{row['imageid']}_product_{row['productid']}.jpg", axis=1)
+            df["image_path"] = df.apply(lambda row: f"/workspace/data/raw/img/image_{row['imageid']}_product_{row['productid']}.jpg", axis=1)
 
         if "description" not in df.columns and "designation" in df.columns:
             # Ensure both columns are strings and handle missing values

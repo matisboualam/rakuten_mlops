@@ -2,7 +2,7 @@
 FROM python:3.9
 
 # Set working directory
-WORKDIR /workdir
+WORKDIR /workspace
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \

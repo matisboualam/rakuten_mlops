@@ -3,7 +3,7 @@ import pandas as pd
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 class ImagePreprocessor:
-    def __init__(self, train_csv, val_csv, image_size=(224, 224), batch_size=64):
+    def __init__(self, train_csv, val_csv, image_size=(224, 224), batch_size=16):
         """
         Initialize the ImagePreprocessor class.
         
@@ -22,11 +22,7 @@ class ImagePreprocessor:
         self.val_df = pd.read_csv(val_csv)
 
         # Create an ImageDataGenerator object for rescaling and augmentations
-        self.train_datagen = ImageDataGenerator(
-            rescale=1.0 / 255,
-            horizontal_flip=True,  # Example augmentation
-            rotation_range=10,     # Example augmentation
-        )
+        self.train_datagen = ImageDataGenerator(rescale=1.0 / 255)
         self.val_datagen = ImageDataGenerator(rescale=1.0 / 255)
 
     def get_train_generator(self):
@@ -60,6 +56,9 @@ class ImagePreprocessor:
             class_mode="categorical",
             shuffle=False  # Do not shuffle validation data
         )
+
+class TextPreprocessor:
+    pass
 
 
 # Example usage

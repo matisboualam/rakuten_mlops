@@ -10,13 +10,13 @@ X- conteneur de preprocessing
 
 MODELISATION:
 
-- conteneur modèle
-- script d'inférence
-- DataLoader appliquant le pretraitement avant entrainement:
+X- conteneur modèle
+X- script d'inférence
+X- DataLoader appliquant le pretraitement avant entrainement:
 	- img
 	- txt
 - fichier test data loader
-- entrainement en local (1 epoch)
+X- entrainement en local (1 epoch)
 - suivi MLFLOW des paramètres d'entrainement + métriques + pondération par accuracy
 
 INTERACTION:

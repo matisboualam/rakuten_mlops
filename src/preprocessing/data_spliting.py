@@ -1,8 +1,29 @@
 import pandas as pd
+import dvc.api
+
 from format_csv import format_csv
 from sklearn.model_selection import train_test_split
 
-# Load your data from CSV files
+# x_path = 'data/raw/x_data.csv'
+# y_path = 'data/raw/y_data.csv'
+
+# repo = 'https://dagshub.com/matisboualam/rakuten_mlops.dvc'
+
+# with dvc.api.open(
+#     x_path,
+#     repo=repo,
+#     mode='r'
+# ) as fd:
+#     x_data =pd.read_csv(fd)
+
+# with dvc.api.open(
+#     y_path,
+#     repo=repo,
+#     mode='r'
+# ) as fd:
+#     y_data =pd.read_csv(fd)
+
+# # Load your data from CSV files
 x_data = pd.read_csv('data/raw/x_data.csv')  # Replace with the path to your x_data.csv
 y_data = pd.read_csv('data/raw/y_data.csv')  # Replace with the path to your y_data.csv
 
@@ -13,7 +34,7 @@ assert len(x_data) == len(y_data), "x_data and y_data must have the same number 
 data = pd.concat([x_data, y_data], axis=1)
 
 # Split the combined data into Unseen Data (70%) and Train Data (30%)
-train_data, unseen_data = train_test_split(data, test_size=0.7, random_state=42)
+train_data, unseen_data = train_test_split(data, test_size=0.9, random_state=42)
 
 # Now split the train_data into training (80%) and validation (20%)
 train_data, val_data = train_test_split(train_data, test_size=0.2, random_state=42)
