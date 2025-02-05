@@ -20,4 +20,12 @@ services:
       - .:/workspace # Mount the current directory into the container
     stdin_open: true  # Keep STDIN open for interactive sessions
     tty: true         # Allocate a pseudo-TTY for the container
+
+  modeling:
+    image: tensorflow-streamlit:0.1
+    container_name: modeling
+    volumes:
+      - .:/app # Mount the current directory into the container
+    stdin_open: true  # Keep STDIN open for interactive sessions
+    tty: true         # Allocate a pseudo-TTY for the container
     

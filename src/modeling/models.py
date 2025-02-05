@@ -62,7 +62,7 @@ class Model:
         predicted_class_index_im = np.argmax(pred_im[0])
         return self.catalog[predicted_class_index_im]
     
-    def train(self):
+    def train_img_model(self):
         train_data_generator = self.img_preprocessor.get_train_generator()
         val_data_generator = self.img_preprocessor.get_val_generator()
         batch = self.img_preprocessor.batch_size

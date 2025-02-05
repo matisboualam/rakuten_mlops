@@ -12,18 +12,20 @@ class ImagePreprocessor:
         :param image_size: The target size for resizing images.
         :param batch_size: The number of images per batch for data generation.
         """
-        self.train_csv = train_csv
-        self.val_csv = val_csv
+
         self.image_size = image_size
         self.batch_size = batch_size
 
         # Load the CSV files
-        self.train_df = pd.read_csv(train_csv)
-        self.val_df = pd.read_csv(val_csv)
+        if train_csv is not None:
+            self.train_csv = train_csv
+            self.train_df = pd.read_csv(train_csv)
+            self.train_datagen = ImageDataGenerator(rescale=1.0 / 255)
 
-        # Create an ImageDataGenerator object for rescaling and augmentations
-        self.train_datagen = ImageDataGenerator(rescale=1.0 / 255)
-        self.val_datagen = ImageDataGenerator(rescale=1.0 / 255)
+        if val_csv is not None:
+            self.val_csv = val_csv
+            self.val_df = pd.read_csv(val_csv)
+            self.val_datagen = ImageDataGenerator(rescale=1.0 / 255)      
 
     def get_train_generator(self):
         """
