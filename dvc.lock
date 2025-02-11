@@ -13,25 +13,25 @@ stages:
       size: 906705
     - path: src/preprocessing/process.py
       hash: md5
-      md5: 4a5619325889e74fc320fec4743c469b
-      size: 2118
+      md5: d3f6a74a00c47982b597211d0ac4652e
+      size: 2116
     outs:
-    - path: data/processed/merged.csv
+    - path: data/processed/data.csv
       hash: md5
-      md5: 2e532ae3802c11f79ec2e1b2e2f904c2
-      size: 58981851
+      md5: f52811390381062791f4207d27d555e1
+      size: 5802935
   split:
     cmd: python src/preprocessing/split.py --test_size 0.2 --val_size 0.1 --unseen_size
       0.9
     deps:
-    - path: data/processed/merged.csv
+    - path: data/processed/data.csv
       hash: md5
-      md5: 2e532ae3802c11f79ec2e1b2e2f904c2
-      size: 58981851
+      md5: f52811390381062791f4207d27d555e1
+      size: 5802935
     - path: src/preprocessing/split.py
       hash: md5
-      md5: 10a4c7f60021e7112e93862a1b1af118
-      size: 1555
+      md5: e42b2eadd7531a255dbaa31939d454d6
+      size: 1592
     params:
       params.yaml:
         split.test_size: 0.2

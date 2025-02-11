@@ -33,7 +33,7 @@ product_dict = {
     1180: "figurines to paint and assemble"
 }
 
-def format_csv(x_csv, y_csv, output_path='/workspace/data/processed/merged.csv'):
+def format_csv(x_csv, y_csv, output_path='/workspace/data/processed/data.csv'):
     if not os.path.exists(x_csv):
         print(f"Error: File not found at {x_csv}")
         return

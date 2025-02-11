@@ -6,13 +6,13 @@ stages:
       - data/raw/x_data.csv
       - data/raw/y_data.csv
     outs:
-      - data/processed/merged.csv
+      - data/processed/data.csv
 
   split:
     cmd: python src/preprocessing/split.py --test_size ${split.test_size} --val_size ${split.val_size} --unseen_size ${split.unseen_size}
     deps:
       - src/preprocessing/split.py
-      - data/processed/merged.csv
+      - data/processed/data.csv
     params:
       - split.test_size
       - split.val_size
