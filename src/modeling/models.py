@@ -1,9 +1,11 @@
 import tensorflow as tf
 import numpy as np
-from dataloaders import ImagePreprocessor
+# from dataloaders import ImagePreprocessor
+from src.modeling.dataloaders import ImagePreprocessor
 import pandas as pd
 import os
 import json
+import mlflow
 
 
 class Model:
@@ -17,7 +19,8 @@ class Model:
         if txt_model_weights is not None:
             self.txt_model = tf.keras.models.load_model(txt_model_weights)
         if img_model_weights is not None:
-            self.img_model = tf.keras.models.load_model(img_model_weights)
+            self.img_model = mlflow.keras.load_model(img_model_weights)
+            # self.img_model = tf.keras.models.load_model(img_model_weights)
         with open('/workspace/models/catalog.json', 'r') as f:
             self.catalog = json.load(f)
         self.train_data = train_data_path

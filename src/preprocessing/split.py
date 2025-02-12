@@ -16,6 +16,10 @@ def split_data(input_csv, test_size, val_size):
     val_df.to_csv("data/processed/val.csv", index=False)
     test_df.to_csv("data/processed/test.csv", index=False)
 
+    print(f"Number of rows in train.csv: {len(train_df)}")
+    print(f"Number of rows in val.csv: {len(val_df)}")
+    print(f"Number of rows in test.csv: {len(test_df)}")
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--test_size", type=float, required=True)
@@ -23,4 +27,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    split_data("data/raw/merged.csv", args.test_size, args.val_size)
+    split_data("data/processed/data.csv", args.test_size, args.val_size)

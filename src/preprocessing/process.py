@@ -53,10 +53,13 @@ def format_csv(x_csv, y_csv, unseen_size):
     new_df["prdtypecode"] = df["prdtypecode"].map(product_dict)
     new_df.to_csv('data/raw/merged.csv', index=False)
     print(f"✅ Données fusionnées et sauvegardées dans 'data/raw/merged.csv'")
-    data_df, unseen_df = train_test_split(df, test_size=unseen_size, random_state=42)
+
+    data_df, unseen_df = train_test_split(new_df, test_size=unseen_size, random_state=42)
     data_df.to_csv('data/processed/data.csv', index=False)
     unseen_df.to_csv('data/processed/unseen.csv', index=False)
     print(f"✅ Données divisées en deux groupes 'data' et 'unseen' dans le dossier data/processed")
+    print(f"Number of lines in 'data.csv': {len(data_df)}")
+    print(f"Number of lines in 'unseen.csv': {len(unseen_df)}")
 
 if __name__ == "__main__":
     x_data_path = '/workspace/data/raw/x_data.csv'
@@ -65,5 +68,5 @@ if __name__ == "__main__":
     parser.add_argument("--unseen_size", type=float, required=True)
 
     args = parser.parse_args()
-    
+
     format_csv(x_data_path, y_data_path, args.unseen_size)

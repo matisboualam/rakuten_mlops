@@ -1,0 +1,12 @@
+# Core dependencies
+fastapi
+uvicorn
+
+numpy
+pandas
+
+# MLflow for experiment tracking
+mlflow
+
+# Optional: If you need request validation & async capabilities
+pydantic

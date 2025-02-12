@@ -1,7 +1,7 @@
 schema: '2.0'
 stages:
   process:
-    cmd: python src/preprocessing/process.py --unseen_size 0.8
+    cmd: python src/preprocessing/process.py --unseen_size 0.98
     deps:
     - path: data/raw/x_data.csv
       hash: md5
@@ -13,20 +13,20 @@ stages:
       size: 906705
     - path: src/preprocessing/process.py
       hash: md5
-      md5: 84b5c12b131d65482d4e3ff338e1e58d
-      size: 2619
+      md5: 2c07f5164bcd1a7e58c3db34f252abb3
+      size: 2744
     params:
       params.yaml:
-        split.unseen_size: 0.8
+        split.unseen_size: 0.98
     outs:
     - path: data/processed/data.csv
       hash: md5
-      md5: 82b114f45027962cfbf60e8cd8817d1b
-      size: 10933148
+      md5: 9d2ffa99afb1ad695496cbf7f128acb1
+      size: 1185197
     - path: data/processed/unseen.csv
       hash: md5
-      md5: 95ea0d172c7158f5a408dd6933aea89e
-      size: 44102773
+      md5: 67ba40a2082b681c284e11796af6890c
+      size: 57796689
     - path: data/raw/merged.csv
       hash: md5
       md5: 2e532ae3802c11f79ec2e1b2e2f904c2
@@ -36,12 +36,12 @@ stages:
     deps:
     - path: data/processed/data.csv
       hash: md5
-      md5: 82b114f45027962cfbf60e8cd8817d1b
-      size: 10933148
+      md5: 9d2ffa99afb1ad695496cbf7f128acb1
+      size: 1185197
     - path: src/preprocessing/split.py
       hash: md5
-      md5: fc18271cbc36b34d1168b7bfd79e10e8
-      size: 1097
+      md5: 835b8a9d22073c49342db0a9922ed80c
+      size: 1273
     params:
       params.yaml:
         split.test_size: 0.3
@@ -49,13 +49,13 @@ stages:
     outs:
     - path: data/processed/test.csv
       hash: md5
-      md5: c9acc7d5d0102a65182a4ca221440abc
-      size: 17604775
+      md5: eb67acbd158477fa9d78755c426cb692
+      size: 389944
     - path: data/processed/train.csv
       hash: md5
-      md5: 74c28c3554af2af4cffeeb7543c16ea1
-      size: 29606321
+      md5: 5056d0826986abe0c836f6ee81182726
+      size: 569301
     - path: data/processed/val.csv
       hash: md5
-      md5: d209e3792543adf2fca8b53deab088e3
-      size: 11770825
+      md5: 8832666241981a8a7e264fcc12373e36
+      size: 226022
