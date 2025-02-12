@@ -1,7 +1,7 @@
 schema: '2.0'
 stages:
   process:
-    cmd: python src/preprocessing/process.py
+    cmd: python src/preprocessing/process.py --unseen_size 0.8
     deps:
     - path: data/raw/x_data.csv
       hash: md5
@@ -13,44 +13,49 @@ stages:
       size: 906705
     - path: src/preprocessing/process.py
       hash: md5
-      md5: d3f6a74a00c47982b597211d0ac4652e
-      size: 2116
+      md5: 84b5c12b131d65482d4e3ff338e1e58d
+      size: 2619
+    params:
+      params.yaml:
+        split.unseen_size: 0.8
     outs:
     - path: data/processed/data.csv
       hash: md5
-      md5: f52811390381062791f4207d27d555e1
-      size: 5802935
+      md5: 82b114f45027962cfbf60e8cd8817d1b
+      size: 10933148
+    - path: data/processed/unseen.csv
+      hash: md5
+      md5: 95ea0d172c7158f5a408dd6933aea89e
+      size: 44102773
+    - path: data/raw/merged.csv
+      hash: md5
+      md5: 2e532ae3802c11f79ec2e1b2e2f904c2
+      size: 58981851
   split:
-    cmd: python src/preprocessing/split.py --test_size 0.2 --val_size 0.1 --unseen_size
-      0.9
+    cmd: python src/preprocessing/split.py --test_size 0.3 --val_size 0.2
     deps:
     - path: data/processed/data.csv
       hash: md5
-      md5: f52811390381062791f4207d27d555e1
-      size: 5802935
+      md5: 82b114f45027962cfbf60e8cd8817d1b
+      size: 10933148
     - path: src/preprocessing/split.py
       hash: md5
-      md5: e42b2eadd7531a255dbaa31939d454d6
-      size: 1592
+      md5: fc18271cbc36b34d1168b7bfd79e10e8
+      size: 1097
     params:
       params.yaml:
-        split.test_size: 0.2
-        split.unseen_size: 0.9
-        split.val_size: 0.1
+        split.test_size: 0.3
+        split.val_size: 0.2
     outs:
     - path: data/processed/test.csv
       hash: md5
-      md5: 98386096088d620dbacb37de0fb03311
-      size: 1140542
+      md5: c9acc7d5d0102a65182a4ca221440abc
+      size: 17604775
     - path: data/processed/train.csv
       hash: md5
-      md5: e93c34dc06d07577daf52ac0be293f10
-      size: 4073266
-    - path: data/processed/unseen.csv
-      hash: md5
-      md5: 6f19d071bfa865ccda63a8dc8db3e1b6
-      size: 53178951
+      md5: 74c28c3554af2af4cffeeb7543c16ea1
+      size: 29606321
     - path: data/processed/val.csv
       hash: md5
-      md5: b1c9a4b28915deb2bb4b4a93d4353457
-      size: 589197
+      md5: d209e3792543adf2fca8b53deab088e3
+      size: 11770825

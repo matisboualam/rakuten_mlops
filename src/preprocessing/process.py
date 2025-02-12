@@ -1,6 +1,7 @@
-import pandas as pd
 import os
 import argparse
+import pandas as pd
+from sklearn.model_selection import train_test_split
 
 # Dictionary mapping prdtypecode to labels
 product_dict = {
@@ -33,7 +34,7 @@ product_dict = {
     1180: "figurines to paint and assemble"
 }
 
-def format_csv(x_csv, y_csv, output_path='/workspace/data/processed/data.csv'):
+def format_csv(x_csv, y_csv, unseen_size):
     if not os.path.exists(x_csv):
         print(f"Error: File not found at {x_csv}")
         return
@@ -50,10 +51,19 @@ def format_csv(x_csv, y_csv, output_path='/workspace/data/processed/data.csv'):
     new_df["image_path"] = df.apply(lambda row: f"/workspace/data/raw/img/image_{row['imageid']}_product_{row['productid']}.jpg", axis=1)
     new_df["description"] = df["designation"].fillna("") + " " + df["description"].fillna("")
     new_df["prdtypecode"] = df["prdtypecode"].map(product_dict)
-    new_df.to_csv(output_path, index=False)
-    print(f"✅ Données fusionnées et sauvegardées dans {output_path}")
-    
+    new_df.to_csv('data/raw/merged.csv', index=False)
+    print(f"✅ Données fusionnées et sauvegardées dans 'data/raw/merged.csv'")
+    data_df, unseen_df = train_test_split(df, test_size=unseen_size, random_state=42)
+    data_df.to_csv('data/processed/data.csv', index=False)
+    unseen_df.to_csv('data/processed/unseen.csv', index=False)
+    print(f"✅ Données divisées en deux groupes 'data' et 'unseen' dans le dossier data/processed")
+
 if __name__ == "__main__":
     x_data_path = '/workspace/data/raw/x_data.csv'
     y_data_path = '/workspace/data/raw/y_data.csv'
-    format_csv(x_data_path, y_data_path)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--unseen_size", type=float, required=True)
+
+    args = parser.parse_args()
+    
+    format_csv(x_data_path, y_data_path, args.unseen_size)
