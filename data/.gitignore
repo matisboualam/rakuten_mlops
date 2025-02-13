@@ -1,7 +1,0 @@
-processed/*
-raw/*
-splits/*
-# Allow DVC tracking
-!raw/*.dvc
-!processed/*.dvc
-

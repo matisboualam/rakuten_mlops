@@ -1,0 +1,4 @@
+mlruns/
+src\preprocessing\__pycache__
+src\modeling\__pycache__
+**/*.csv

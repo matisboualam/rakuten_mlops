@@ -1,0 +1,4 @@
+split:
+  test_size: 0.3
+  val_size: 0.2
+  unseen_size: 0.98

@@ -1,0 +1,65 @@
+schema: '2.0'
+stages:
+  process:
+    cmd: python src/preprocessing/process.py --unseen_size 0.98
+    deps:
+    - path: data/raw/x_data.csv
+      hash: md5
+      md5: c936389910c88bb29bf2c438af3476df
+      size: 54129120
+      isexec: true
+    - path: data/raw/y_data.csv
+      hash: md5
+      md5: 52d45c998ddc0c10f05987bb233ff5e7
+      size: 906705
+      isexec: true
+    - path: src/preprocessing/process.py
+      hash: md5
+      md5: 2c07f5164bcd1a7e58c3db34f252abb3
+      size: 2744
+      isexec: true
+    params:
+      params.yaml:
+        split.unseen_size: 0.98
+    outs:
+    - path: data/processed/data.csv
+      hash: md5
+      md5: 9d2ffa99afb1ad695496cbf7f128acb1
+      size: 1185197
+    - path: data/processed/unseen.csv
+      hash: md5
+      md5: 67ba40a2082b681c284e11796af6890c
+      size: 57796689
+    - path: data/raw/merged.csv
+      hash: md5
+      md5: 2e532ae3802c11f79ec2e1b2e2f904c2
+      size: 58981851
+  split:
+    cmd: python src/preprocessing/split.py --test_size 0.3 --val_size 0.2
+    deps:
+    - path: data/processed/data.csv
+      hash: md5
+      md5: 9d2ffa99afb1ad695496cbf7f128acb1
+      size: 1185197
+    - path: src/preprocessing/split.py
+      hash: md5
+      md5: 835b8a9d22073c49342db0a9922ed80c
+      size: 1273
+      isexec: true
+    params:
+      params.yaml:
+        split.test_size: 0.3
+        split.val_size: 0.2
+    outs:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: eb67acbd158477fa9d78755c426cb692
+      size: 389944
+    - path: data/processed/train.csv
+      hash: md5
+      md5: 5056d0826986abe0c836f6ee81182726
+      size: 569301
+    - path: data/processed/val.csv
+      hash: md5
+      md5: 8832666241981a8a7e264fcc12373e36
+      size: 226022

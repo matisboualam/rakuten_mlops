@@ -1,0 +1,26 @@
+stages:
+  process:
+    cmd: python src/preprocessing/process.py --unseen_size ${split.unseen_size}
+    deps:
+      - src/preprocessing/process.py
+      - data/raw/x_data.csv
+      - data/raw/y_data.csv
+    params:
+      - split.unseen_size 
+    outs:
+      - data/raw/merged.csv
+      - data/processed/unseen.csv
+      - data/processed/data.csv
+
+  split:
+    cmd: python src/preprocessing/split.py --test_size ${split.test_size} --val_size ${split.val_size}
+    deps:
+      - src/preprocessing/split.py
+      - data/processed/data.csv
+    params:
+      - split.test_size
+      - split.val_size
+    outs:
+      - data/processed/train.csv
+      - data/processed/val.csv
+      - data/processed/test.csv
