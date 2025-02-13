@@ -1,0 +1,13 @@
+opencv-python
+pandas
+seaborn
+matplotlib
+numpy
+jupyterlab
+scipy
+nltk
+beautifulsoup4
+fasttext
+gensim
+keras
+scikit-learn
