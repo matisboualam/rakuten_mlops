@@ -27,7 +27,9 @@ import gensim.downloader as api
 from sklearn.preprocessing import LabelEncoder
 from keras.utils import to_categorical
 import unicodedata
+import mlflow
 
+mlflow.set_tracking_uri("http://localhost:5000")
 
 catalog = [
     "articles for newborns and babies",
@@ -67,72 +69,6 @@ nltk.download('wordnet')
 
 # Charger le modèle d'embeddings pré-entraîné FastText
 word2vec_model = api.load('fasttext-wiki-news-subwords-300')
-
-class PreprocessText:
-    def __init__(self):
-        """
-        Constructeur de la classe.
-        """
-        self.lemmatizer = WordNetLemmatizer()
-        self.stop_words = set(stopwords.words('french'))
-        self.catalog = catalog
-
-    def remove_isolated_letter_apostrophe(self, text):
-        """Retirer les lettres isolées suivies d'une apostrophe."""
-        return re.sub(r"\b[a-zA-Z]'", "", text)
-
-    def remove_malencoded_chars(self, text):
-        """Nettoyer les caractères mal encodés (ex. : â, â) et tous autres caractères non souhaités."""
-        
-        # 1. Normalisation des caractères Unicode (pour résoudre les problèmes d'encodage)
-        text = unicodedata.normalize('NFKD', text)
-        
-        # 2. Remplacer les caractères non-ASCII par des espaces
-        text = re.sub(r'[^\x00-\x7F]+', ' ', text)
-        
-        # 3. Nettoyage des caractères non imprimables (ex. : caractères invisibles)
-        text = ''.join([c for c in text if c.isprintable()])
-
-        return text
-
-    def clean_html(self, text):
-        """Enlever les balises HTML."""
-        return BeautifulSoup(text, "html.parser").get_text()
-
-    def remove_punctuation(self, text):
-        """Supprimer la ponctuation."""
-        return text.translate(str.maketrans('', '', string.punctuation))
-
-    def tokenize_and_lemmatize(self, text):
-        """Tokenisation et lemmatisation des mots, en retirant les mots vides (stopwords)."""
-        tokens = word_tokenize(text)
-        tokens = [self.lemmatizer.lemmatize(word) for word in tokens if word not in self.stop_words]
-        return ' '.join(tokens)
-
-    def preprocess_text_for_dataset(self, df, column, image_path=None):
-        """Appliquer toutes les étapes de nettoyage sur un texte ou une colonne entière du DataFrame."""
-        if image_path:
-            # Filtrer le DataFrame pour trouver la ligne correspondant à l'image
-            row = df[df["image_path"] == image_path]
-            if row.empty:
-                raise ValueError(f"Aucune correspondance trouvée pour {image_path}.")
-            text = row[column].values[0]  # Récupérer la description associée
-            text = self.clean_text(text)  # Appliquer le nettoyage
-            return text
-        
-        # Si image_path n'est pas fourni, traiter toute la colonne
-        df[column] = df[column].apply(self.clean_text)
-        return df
-
-    def clean_text(self, text):
-        """Nettoyage du texte."""
-        text = text.lower()  # Conversion en minuscules
-        text = self.remove_isolated_letter_apostrophe(text)  # Retirer les lettres isolées suivies d'une apostrophe
-        text = self.remove_malencoded_chars(text)  # Nettoyer les caractères mal encodés
-        text = self.clean_html(text)  # Enlever les balises HTML
-        text = self.remove_punctuation(text)  # Retirer la ponctuation
-        text = self.tokenize_and_lemmatize(text)  # Tokenisation et lemmatisation
-        return text
 
 
     
@@ -221,26 +157,66 @@ class Model:
         return text_categorical_input
     
     def train_text(self):
-        self.txt_model.compile(optimizer=Adam(learning_rate=0.001), loss='categorical_crossentropy', metrics=['accuracy'])
-        # Entraîner le modèle
-        data_train = pd.read_csv(self.train_data)
-        X_train_split = self.create_X(data_train)
+            """Entraîne le modèle et enregistre les hyperparamètres, les métriques, et le rapport de classification dans MLflow."""
+            
+            # Charger les données
+            data_train = pd.read_csv(self.train_data)
+            X_train_split = self.create_X(data_train)
+            X_val_split = self.create_X(self.txt_preprocessor.val_df)
+            Y_train_split = self.create_Y(self.txt_preprocessor.train_df)
+            Y_val_split = self.create_Y(self.txt_preprocessor.val_df)
 
-        print(f"X_train_split vision {X_train_split}")
+            # Afficher les formes des données
+            print(f"Shape of X_train_split: {X_train_split.shape}")
+            print(f"Shape of Y_train_split: {Y_train_split.shape}")
+            print(f"Shape of X_val_split: {X_val_split.shape}")
+            print(f"Shape of Y_val_split: {Y_val_split.shape}")
+            
+            # Démarrer un nouveau run MLflow
+            with mlflow.start_run():
+                # Définir les hyperparamètres
+                learning_rate = 0.001
+                batch_size = 32
+                epochs = 1
+                
+                # 🔹 Log des hyperparamètres
+                mlflow.log_param("learning_rate", learning_rate)
+                mlflow.log_param("batch_size", batch_size)
+                mlflow.log_param("epochs", epochs)
+                mlflow.log_param("dataset_size", len(data_train))  # Log la taille du dataset
 
-        X_val_split = self.create_X(self.txt_preprocessor.val_df)
-        Y_train_split = self.create_Y(self.txt_preprocessor.train_df)
-        Y_val_split = self.create_Y(self.txt_preprocessor.val_df)
+                # Compilation du modèle
+                self.txt_model.compile(optimizer=Adam(learning_rate=learning_rate),
+                                    loss='categorical_crossentropy',
+                                    metrics=['accuracy'])
 
-        print(f"Shape of X_train_split: {X_train_split.shape}")
-        print(f"Shape of Y_train_split: {Y_train_split.shape}")
+                # Entraînement du modèle
+                history = self.txt_model.fit(X_train_split, Y_train_split,
+                                            validation_data=(X_val_split, Y_val_split),
+                                            epochs=epochs, batch_size=batch_size)
 
-        print(f"Shape of X_val_split: {X_val_split.shape}")
-        print(f"Shape of Y_val_split: {Y_val_split.shape}")
+                # Prédiction et évaluation
+                Y_pred = self.txt_model.predict(X_val_split)
+                Y_pred_classes = np.argmax(Y_pred, axis=1)
+                Y_true_classes = np.argmax(Y_val_split, axis=1)
 
-        history = self.txt_model.fit(X_train_split, Y_train_split, validation_data=(X_val_split, Y_val_split), epochs=1, batch_size=32)
-        print("rentrainment worked")
-        
+                # Rapport de classification
+                class_report = classification_report(Y_true_classes, Y_pred_classes, output_dict=True)
+                accuracy = class_report["accuracy"]
+
+                # 🔹 Log des métriques (accuracy, loss)
+                mlflow.log_metric("accuracy", accuracy)
+                mlflow.log_metric("val_loss", history.history["val_loss"][-1])
+                mlflow.log_metric("val_accuracy", history.history["val_accuracy"][-1])
+
+                # 🔹 Log du modèle
+                mlflow.keras.log_model(self.txt_model, "text_model")
+
+                # 🔹 Log du rapport de classification en texte
+                mlflow.log_text(class_report, "classification_report.json")
+
+                print("Entraînement terminé et enregistré dans MLflow.")
+            
     def train_img(self):
         train_data_generator = self.img_preprocessor.get_train_generator()
         val_data_generator = self.img_preprocessor.get_val_generator()
@@ -279,9 +255,4 @@ image_path_input = "/workspace/data/raw/img/image_1193221506_product_3139415323.
 if image_path_input not in df["image_path"].values:
     raise ValueError(f"L'image '{image_path_input}' n'existe pas dans le dataset.")
 
-# Prédiction avec le modèle de texte
-#predicted_category, cleaned_text = model.predict_text(df, image_path_input, TEXT_MODEL_PATH,word2vec_model)
 model.train_text()
-# Affichage des résultats
-#print(f" Texte nettoyé : {cleaned_text}")
-#print(f" Catégorie prédite : {predicted_category}")
