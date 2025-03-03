@@ -1,6 +1,7 @@
 import argparse
 import pandas as pd
 from sklearn.model_selection import train_test_split
+import yaml
 
 def split_data(input_csv, test_size, val_size):
     df = pd.read_csv(input_csv)
@@ -22,8 +23,8 @@ def split_data(input_csv, test_size, val_size):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--test_size", type=float, required=True)
-    parser.add_argument("--val_size", type=float, required=True)
+    parser.add_argument("--test_size", type=float, default=0.3)
+    parser.add_argument("--val_size", type=float, default=0.2)
 
     args = parser.parse_args()
 

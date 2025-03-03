@@ -1,50 +1,91 @@
 version: '3.8'
 
 services:
-  tensorflow:
-    build: docker_services/dev/
-    container_name: dev
-    ports:
-      - "8000:8000"  # Host port 8000 mapped to container port 8000
-      - "8001:8001"  # Host port 8001 mapped to container port 8001
-    volumes:
-      - .:/workspace  # Mount the current directory into the container
-    stdin_open: true  # Keep STDIN open for interactive sessions
-    tty: true         # Allocate a pseudo-TTY for the container
-    command: >
-      jupyter lab --allow-root --port=8000 --no-browser --ip=0.0.0.0 --NotebookApp.token='' --NotebookApp.password='' --ServerApp.port_retries=0
-
   preprocessing:
     build: docker_services/preprocessing/
     container_name: preprocessing
     volumes:
-      - .:/workspace # Mount the current directory into the container
-    stdin_open: true  # Keep STDIN open for interactive sessions
-    tty: true         # Allocate a pseudo-TTY for the container
+      - .:/workspace
+    stdin_open: true
+    tty: true
+    command: >
+      /bin/sh -c "
+      if [ -f data/processed/data.csv ]; then
+        echo '✅ File data/processed/data.csv exists. Running: dvc repro split';
+        dvc repro split;
+      else
+        echo '⚠️ File data/processed/data.csv not found. Running: dvc repro';
+        dvc repro;
+      fi
+      "
 
   modeling:
     build: docker_services/modeling/
     container_name: modeling
     ports:
-      - "8080:8080"  # Exposing port 8080 for MLflow UI
+      - "8081:8081"  # Changed from 8080 to 8081
     volumes:
-      - .:/workspace # Mount the current directory into the container
-    stdin_open: true  # Keep STDIN open for interactive sessions
-    tty: true         # Allocate a pseudo-TTY for the container
+      - .:/workspace
+    stdin_open: true
+    tty: true
     command: >
-      mlflow server --host 0.0.0.0 --port 8080 --backend-store-uri sqlite:///mlflow.db --default-artifact-root /workspace/mlruns
+      mlflow server --host 0.0.0.0 --port 8081 --backend-store-uri sqlite:///mlflow.db --default-artifact-root /workspace/mlruns
 
   deployment:
     build: docker_services/deployment/
     container_name: deployment
     ports:
-      - "8888:8888"
+      - "8000:8000"
     volumes:
       - .:/workspace
-    stdin_open: true  # Keep STDIN open for interactive sessions
-    tty: true         # Allocate a pseudo-TTY for the container
-    # command: >
-    #   uvicorn app:app --host 0.0.0.0 --port 8888 --reload
+    networks:
+      - airflow_network
+    stdin_open: true
+    tty: true
+    command: >
+      uvicorn app:app --host 0.0.0.0 --port 8000 --reload
 
+  # ✅ Airflow Services
+  airflow-webserver:
+    image: apache/airflow:2.7.2
+    container_name: airflow_webserver
+    restart: always
+    depends_on:
+      - airflow-init
+      - deployment
+    networks:
+      - airflow_network
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=SequentialExecutor
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+    volumes:
+      - .:/opt/
+    ports:
+      - "8080:8080"  # Now using 8080 instead of 8081
+    command: airflow webserver --port 8080
 
+  airflow-scheduler:
+    image: apache/airflow:2.7.2
+    container_name: airflow_scheduler
+    restart: always
+    depends_on:
+      - airflow-init
+    networks:
+      - airflow_network
+    volumes:
+      - .:/opt/
+    command: airflow scheduler
 
+  airflow-init:
+    image: apache/airflow:2.7.2
+    container_name: airflow_init
+    entrypoint: ["bash", "-c", "airflow db init"]
+    networks:
+      - airflow_network
+    volumes:
+      - .:/opt/
+    command: airflow db init
+
+networks:
+  airflow_network:
+    driver: bridge

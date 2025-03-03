@@ -6,10 +6,14 @@ from src.modeling.models import Model
 # Définition de l'application FastAPI
 app = FastAPI()
 
+model_weights = "/workspace/models/image_model_MobileNet.keras"
 MLFLOW_TRACKING_URI = "/workspace/mlruns/2/5f23b7c819544fc49e6fb53206cad84a/artifacts/image_classification_model/"
 
 print(f"Loading model ...")
-model = Model(img_model_weights=MLFLOW_TRACKING_URI)
+model = Model(
+    img_model_weights=model_weights,
+    # mlflow_img_model_weights=MLFLOW_TRACKING_URI
+    )
 print("Model loaded successfully.")
 
 user_data = pd.read_csv('data/processed/unseen.csv')
@@ -28,6 +32,7 @@ async def predict(indice: int):
         prediction = model.predict_img(image_path)  # Ensure it's a list if needed
         
         return {
+            "indice": indice,
             "image_path": image_path,
             "predicted_class": str(prediction)
         }
@@ -36,37 +41,30 @@ async def predict(indice: int):
         return {"error": str(e)}
 
 @app.post("/predict/feedback")
-async def feedback(indice: int, correct: bool, annotation: str = None):
+async def feedback(indice: int, predicted_class: str):
     """Enregistre le feedback de l'utilisateur dans un fichier CSV."""
     try:
         global train_data, user_data
         input = user_data.iloc[indice]
 
-        # Add the input to train_data but do not modify user_data
-        if correct:
-            print(len(train_data))
-            # Use concat instead of append
-            train_data = pd.concat([train_data, input.to_frame().T], ignore_index=True)
-            print(len(train_data))
-            
+        feedback_message = ""
+        if input['prdtypecode'] == predicted_class:
+            feedback_message = '✅ Correct prediction!'
         else:
-            if annotation is not None:
-                input['prdtypecode'] = annotation
-            print(len(train_data))
-            # Use concat instead of append
-            train_data = pd.concat([train_data, input.to_frame().T], ignore_index=True)
-            print(len(train_data))
+            feedback_message = '⚠️ Incorrect prediction!'
 
-        # Optionally, remove the entry from the user_data if needed
-        user_data.drop(indice, inplace=True)  # Uncomment if you want to remove the row from user_data
+        train_data = pd.concat([train_data, input.to_frame().T], ignore_index=True)
+        user_data.drop(indice, inplace=True)
+
         train_data.to_csv('data/processed/data.csv', index=False)
         user_data.to_csv('data/processed/unseen.csv', index=False)
-        
 
-        return {"message": "Feedback recorded successfully."}
+        return {
+            "message": "Feedback recorded successfully.",
+            "feedback": feedback_message,
+            "train_data_new_size": len(train_data),
+            "user_data_new_size": len(user_data)
+        }
     except Exception as e:
         return {"error": str(e)}
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
