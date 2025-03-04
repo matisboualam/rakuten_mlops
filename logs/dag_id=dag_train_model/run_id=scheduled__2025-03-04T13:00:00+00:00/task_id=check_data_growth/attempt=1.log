@@ -1,0 +1,34 @@
+[2025-03-04T13:41:17.020+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_train_model.check_data_growth scheduled__2025-03-04T13:00:00+00:00 [queued]>
+[2025-03-04T13:41:17.023+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_train_model.check_data_growth scheduled__2025-03-04T13:00:00+00:00 [queued]>
+[2025-03-04T13:41:17.023+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-03-04T13:41:17.028+0000] {taskinstance.py:2191} INFO - Executing <Task(BranchPythonOperator): check_data_growth> on 2025-03-04 13:00:00+00:00
+[2025-03-04T13:41:17.030+0000] {standard_task_runner.py:60} INFO - Started process 7508 to run task
+[2025-03-04T13:41:17.031+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'dag_train_model', 'check_data_growth', 'scheduled__2025-03-04T13:00:00+00:00', '--job-id', '462', '--raw', '--subdir', 'DAGS_FOLDER/dag_train_model.py', '--cfg-path', '/tmp/tmpf8c8_lqt']
+[2025-03-04T13:41:17.032+0000] {standard_task_runner.py:88} INFO - Job 462: Subtask check_data_growth
+[2025-03-04T13:41:17.037+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/***/settings.py:194: DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+  SQL_ALCHEMY_CONN = conf.get("database", "SQL_ALCHEMY_CONN")
+
+[2025-03-04T13:41:17.049+0000] {task_command.py:423} INFO - Running <TaskInstance: dag_train_model.check_data_growth scheduled__2025-03-04T13:00:00+00:00 [running]> on host 6b693801eb18
+[2025-03-04T13:41:17.077+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_train_model' AIRFLOW_CTX_TASK_ID='check_data_growth' AIRFLOW_CTX_EXECUTION_DATE='2025-03-04T13:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-04T13:00:00+00:00'
+[2025-03-04T13:41:17.089+0000] {logging_mixin.py:188} INFO - previous size 20
+[2025-03-04T13:41:17.089+0000] {logging_mixin.py:188} INFO - new size 1698
+[2025-03-04T13:41:17.090+0000] {logging_mixin.py:188} INFO - interval1678
+[2025-03-04T13:41:17.092+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-03-04T13:41:17.094+0000] {python.py:201} INFO - Done. Returned value was: process_data
+[2025-03-04T13:41:17.094+0000] {branch.py:35} INFO - Branch into process_data
+[2025-03-04T13:41:17.094+0000] {skipmixin.py:178} INFO - Following branch process_data
+[2025-03-04T13:41:17.097+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 233, in execute
+    return self.do_branch(context, super().execute(context))
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/branch.py", line 36, in do_branch
+    self.skip_all_except(context["ti"], branches_to_execute)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/skipmixin.py", line 213, in skip_all_except
+    raise AirflowException(
+airflow.exceptions.AirflowException: 'branch_task_ids' must contain only valid task_ids. Invalid tasks found: {'process_data'}.
+[2025-03-04T13:41:17.098+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=dag_train_model, task_id=check_data_growth, execution_date=20250304T130000, start_date=20250304T134117, end_date=20250304T134117
+[2025-03-04T13:41:17.103+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 462 for task check_data_growth ('branch_task_ids' must contain only valid task_ids. Invalid tasks found: {'process_data'}.; 7508)
+[2025-03-04T13:41:17.123+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-03-04T13:41:17.131+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

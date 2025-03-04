@@ -1,0 +1,22 @@
+[2025-03-03T10:30:32.702+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_ingest_data.add_new_data scheduled__2025-03-03T10:30:31+00:00 [queued]>
+[2025-03-03T10:30:32.707+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_ingest_data.add_new_data scheduled__2025-03-03T10:30:31+00:00 [queued]>
+[2025-03-03T10:30:32.707+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-03-03T10:30:32.715+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): add_new_data> on 2025-03-03 10:30:31+00:00
+[2025-03-03T10:30:32.719+0000] {standard_task_runner.py:60} INFO - Started process 6541 to run task
+[2025-03-03T10:30:32.720+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'dag_ingest_data', 'add_new_data', 'scheduled__2025-03-03T10:30:31+00:00', '--job-id', '240', '--raw', '--subdir', 'DAGS_FOLDER/dag_ingest_data.py', '--cfg-path', '/tmp/tmpurviv7mg']
+[2025-03-03T10:30:32.721+0000] {standard_task_runner.py:88} INFO - Job 240: Subtask add_new_data
+[2025-03-03T10:30:32.728+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/***/settings.py:194: DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+  SQL_ALCHEMY_CONN = conf.get("database", "SQL_ALCHEMY_CONN")
+
+[2025-03-03T10:30:32.747+0000] {task_command.py:423} INFO - Running <TaskInstance: dag_ingest_data.add_new_data scheduled__2025-03-03T10:30:31+00:00 [running]> on host 87f967beecb5
+[2025-03-03T10:30:32.791+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_ingest_data' AIRFLOW_CTX_TASK_ID='add_new_data' AIRFLOW_CTX_EXECUTION_DATE='2025-03-03T10:30:31+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-03T10:30:31+00:00'
+[2025-03-03T10:30:32.858+0000] {dag_ingest_data.py:38} INFO - Ajout de la ligne suivante à data :
+image_path     /workspace/data/raw/img/image_1313482243_produ...
+description    Nappe De Noël Imprimer Rectangle Table Cover H...
+prdtypecode                                                  NaN
+Name: 9610, dtype: object
+[2025-03-03T10:30:32.964+0000] {dag_ingest_data.py:53} INFO - Nouvelle taille du fichier data : 1761
+[2025-03-03T10:30:32.966+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-03-03T10:30:32.970+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=dag_ingest_data, task_id=add_new_data, execution_date=20250303T103031, start_date=20250303T103032, end_date=20250303T103032
+[2025-03-03T10:30:33.191+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-03-03T10:30:33.202+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

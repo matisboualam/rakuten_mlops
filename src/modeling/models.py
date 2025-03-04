@@ -80,9 +80,9 @@ class Model:
         if img_model_weights is not None:
             self.img_model = tf.keras.models.load_model(img_model_weights)
         self.catalog = catalog
-        self.train_data = '/workspace/data/processed/train.csv'
-        self.validation_data = '/workspace/data/processed/val.csv'
-        self.test_data = '/workspace/data/processed/test.csv'
+        self.train_data = '/opt/airflow/data/processed/train.csv'
+        self.validation_data = '/opt/airflow/data/processed/val.csv'
+        self.test_data = '/opt/airflow/data/processed/test.csv'
         if os.path.exists(self.train_data) and os.path.exists(self.validation_data):
             self.img_preprocessor = ImagePreprocessor(self.train_data, self.validation_data,self.test_data)
             self.txt_preprocessor = TextPreprocessor(self.train_data, self.validation_data,self.test_data)
@@ -221,7 +221,8 @@ class Model:
             mlflow.log_text(class_report_json, "classification_report.json")
 
             print("Entraînement terminé et enregistré dans MLflow.")
-            
+
+
     def train_img(self):
         train_data_generator = self.img_preprocessor.get_train_generator()
         val_data_generator = self.img_preprocessor.get_val_generator()

@@ -1,0 +1,22 @@
+[2025-03-03T10:00:09.228+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_ingest_data.add_new_data scheduled__2025-03-03T10:00:07+00:00 [queued]>
+[2025-03-03T10:00:09.233+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_ingest_data.add_new_data scheduled__2025-03-03T10:00:07+00:00 [queued]>
+[2025-03-03T10:00:09.233+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-03-03T10:00:09.240+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): add_new_data> on 2025-03-03 10:00:07+00:00
+[2025-03-03T10:00:09.243+0000] {standard_task_runner.py:60} INFO - Started process 5037 to run task
+[2025-03-03T10:00:09.245+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'dag_ingest_data', 'add_new_data', 'scheduled__2025-03-03T10:00:07+00:00', '--job-id', '155', '--raw', '--subdir', 'DAGS_FOLDER/dag_ingest_data.py', '--cfg-path', '/tmp/tmp2la3tn0x']
+[2025-03-03T10:00:09.245+0000] {standard_task_runner.py:88} INFO - Job 155: Subtask add_new_data
+[2025-03-03T10:00:09.252+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/***/settings.py:194: DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+  SQL_ALCHEMY_CONN = conf.get("database", "SQL_ALCHEMY_CONN")
+
+[2025-03-03T10:00:09.276+0000] {task_command.py:423} INFO - Running <TaskInstance: dag_ingest_data.add_new_data scheduled__2025-03-03T10:00:07+00:00 [running]> on host 87f967beecb5
+[2025-03-03T10:00:09.313+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_ingest_data' AIRFLOW_CTX_TASK_ID='add_new_data' AIRFLOW_CTX_EXECUTION_DATE='2025-03-03T10:00:07+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-03T10:00:07+00:00'
+[2025-03-03T10:00:09.436+0000] {logging_mixin.py:188} INFO - Ajout de la ligne suivante à data :
+image_path     /workspace/data/raw/img/image_1324092435_produ...
+description    X800 Zoomables Xml T6 + Lampe De Poche Led Tac...
+prdtypecode                                  outdoor accessories
+Name: 17381, dtype: object
+[2025-03-03T10:00:09.632+0000] {logging_mixin.py:188} INFO - Nouvelle taille du fichier data : 1716
+[2025-03-03T10:00:09.634+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-03-03T10:00:09.639+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=dag_ingest_data, task_id=add_new_data, execution_date=20250303T100007, start_date=20250303T100009, end_date=20250303T100009
+[2025-03-03T10:00:09.762+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-03-03T10:00:09.775+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

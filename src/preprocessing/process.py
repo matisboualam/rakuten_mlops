@@ -1,9 +1,10 @@
 import os
 import argparse
 import pandas as pd
+import csv  # Importation nécessaire pour contrôler les guillemets
 from sklearn.model_selection import train_test_split
 
-# Dictionary mapping prdtypecode to labels
+# Dictionnaire des labels pour chaque 'prdtypecode'
 product_dict = {
     2583: "pool accessories",
     1560: "home furnishings and decoration",
@@ -47,16 +48,20 @@ def format_csv(x_csv, y_csv, unseen_size):
         assert len(x_data) == len(y_data)
         df = pd.concat([x_data, y_data], axis=1)
 
+    # Création du nouveau dataframe
     new_df = pd.DataFrame()    
     new_df["image_path"] = df.apply(lambda row: f"/workspace/data/raw/img/image_{row['imageid']}_product_{row['productid']}.jpg", axis=1)
     new_df["description"] = df["designation"].fillna("") + " " + df["description"].fillna("")
     new_df["prdtypecode"] = df["prdtypecode"].map(product_dict)
-    new_df.to_csv('data/raw/merged.csv', index=False)
+
+    # Sauvegarde du fichier merged avec guillemets pour éviter les problèmes de virgules
+    new_df.to_csv('data/raw/merged.csv', index=False, quoting=csv.QUOTE_MINIMAL)
     print(f"✅ Données fusionnées et sauvegardées dans 'data/raw/merged.csv'")
 
+    # Séparer en deux groupes 'data' et 'unseen' 
     data_df, unseen_df = train_test_split(new_df, test_size=unseen_size, random_state=42)
-    data_df.to_csv('data/processed/data.csv', index=False)
-    unseen_df.to_csv('data/processed/unseen.csv', index=False)
+    data_df.to_csv('data/processed/data.csv', index=False, quoting=csv.QUOTE_MINIMAL)  # Ajout des guillemets ici
+    unseen_df.to_csv('data/processed/unseen.csv', index=False, quoting=csv.QUOTE_MINIMAL)  # Idem pour unseen
     print(f"✅ Données divisées en deux groupes 'data' et 'unseen' dans le dossier data/processed")
     print(f"Number of lines in 'data.csv': {len(data_df)}")
     print(f"Number of lines in 'unseen.csv': {len(unseen_df)}")

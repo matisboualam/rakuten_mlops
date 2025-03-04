@@ -1,0 +1,43 @@
+[2025-03-03T15:01:16.952+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_ingest_data.add_new_data scheduled__2025-03-03T15:00:13+00:00 [queued]>
+[2025-03-03T15:01:16.955+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_ingest_data.add_new_data scheduled__2025-03-03T15:00:13+00:00 [queued]>
+[2025-03-03T15:01:16.955+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 2
+[2025-03-03T15:01:16.961+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): add_new_data> on 2025-03-03 15:00:13+00:00
+[2025-03-03T15:01:16.964+0000] {standard_task_runner.py:60} INFO - Started process 1009 to run task
+[2025-03-03T15:01:16.965+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'dag_ingest_data', 'add_new_data', 'scheduled__2025-03-03T15:00:13+00:00', '--job-id', '366', '--raw', '--subdir', 'DAGS_FOLDER/dag_ingest_data.py', '--cfg-path', '/tmp/tmplxczof3h']
+[2025-03-03T15:01:16.966+0000] {standard_task_runner.py:88} INFO - Job 366: Subtask add_new_data
+[2025-03-03T15:01:16.971+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/***/settings.py:194: DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+  SQL_ALCHEMY_CONN = conf.get("database", "SQL_ALCHEMY_CONN")
+
+[2025-03-03T15:01:16.985+0000] {task_command.py:423} INFO - Running <TaskInstance: dag_ingest_data.add_new_data scheduled__2025-03-03T15:00:13+00:00 [running]> on host 70acd326a01a
+[2025-03-03T15:01:17.017+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_ingest_data' AIRFLOW_CTX_TASK_ID='add_new_data' AIRFLOW_CTX_EXECUTION_DATE='2025-03-03T15:00:13+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-03T15:00:13+00:00'
+[2025-03-03T15:01:17.550+0000] {dag_ingest_data.py:38} INFO - Ajout de la ligne suivante à data :
+image_path     /workspace/data/raw/img/image_1155972515_produ...
+description    Yu-Gi-Oh! - Cibr-Frse1 - Dragon Étincelles Chr...
+prdtypecode                                   trading card games
+Name: 83217, dtype: object
+[2025-03-03T15:01:17.559+0000] {dag_ingest_data.py:58} ERROR - Une erreur s'est produite lors de l'ajout de données : [Errno 13] Permission denied: '/opt/***/data/processed/data.csv'
+[2025-03-03T15:01:17.559+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/dag_ingest_data.py", line 59, in add_new_data
+    raise e  # Optionnel, pour remonter l'erreur dans Airflow
+  File "/opt/airflow/dags/dag_ingest_data.py", line 47, in add_new_data
+    df.to_csv(DATA_PATH_DATA, index=False)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/generic.py", line 3772, in to_csv
+    return DataFrameRenderer(formatter).to_csv(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/formats/format.py", line 1186, in to_csv
+    csv_formatter.save()
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/formats/csvs.py", line 240, in save
+    with get_handle(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/common.py", line 859, in get_handle
+    handle = open(
+PermissionError: [Errno 13] Permission denied: '/opt/airflow/data/processed/data.csv'
+[2025-03-03T15:01:17.566+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=dag_ingest_data, task_id=add_new_data, execution_date=20250303T150013, start_date=20250303T150116, end_date=20250303T150117
+[2025-03-03T15:01:17.579+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 366 for task add_new_data ([Errno 13] Permission denied: '/opt/airflow/data/processed/data.csv'; 1009)
+[2025-03-03T15:01:17.619+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-03-03T15:01:17.629+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

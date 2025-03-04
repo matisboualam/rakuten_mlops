@@ -1,0 +1,47 @@
+[2025-03-03T09:00:19.746+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_ingest_data.add_new_data scheduled__2025-03-03T09:00:17+00:00 [queued]>
+[2025-03-03T09:00:19.749+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_ingest_data.add_new_data scheduled__2025-03-03T09:00:17+00:00 [queued]>
+[2025-03-03T09:00:19.750+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-03-03T09:00:19.756+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): add_new_data> on 2025-03-03 09:00:17+00:00
+[2025-03-03T09:00:19.759+0000] {standard_task_runner.py:60} INFO - Started process 2340 to run task
+[2025-03-03T09:00:19.760+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'dag_ingest_data', 'add_new_data', 'scheduled__2025-03-03T09:00:17+00:00', '--job-id', '117', '--raw', '--subdir', 'DAGS_FOLDER/dag_ingest_data.py', '--cfg-path', '/tmp/tmpxqnsxr03']
+[2025-03-03T09:00:19.761+0000] {standard_task_runner.py:88} INFO - Job 117: Subtask add_new_data
+[2025-03-03T09:00:19.767+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/***/settings.py:194: DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+  SQL_ALCHEMY_CONN = conf.get("database", "SQL_ALCHEMY_CONN")
+
+[2025-03-03T09:00:19.782+0000] {task_command.py:423} INFO - Running <TaskInstance: dag_ingest_data.add_new_data scheduled__2025-03-03T09:00:17+00:00 [running]> on host 87f967beecb5
+[2025-03-03T09:00:19.816+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_ingest_data' AIRFLOW_CTX_TASK_ID='add_new_data' AIRFLOW_CTX_EXECUTION_DATE='2025-03-03T09:00:17+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-03T09:00:17+00:00'
+[2025-03-03T09:00:19.844+0000] {logging_mixin.py:188} INFO - image_path                    NaN
+description                   NaN
+prdtypecode                   NaN
+0                             NaN
+0.1                           NaN
+0.2                           NaN
+0.3                           NaN
+0.4                           NaN
+0.5                           NaN
+0.6                           NaN
+0.7                           NaN
+0.8                           NaN
+0.9                           NaN
+0.10                          NaN
+0.11                          NaN
+0.12                          NaN
+0.13                          NaN
+0.14                          NaN
+0.15                          NaN
+0.16                          NaN
+0.17                          NaN
+0.18                          NaN
+0.19                          NaN
+0.20                          NaN
+0.21                          NaN
+0.22                          NaN
+0.23                          NaN
+0.24                          NaN
+0.25                          NaN
+0.26           trading card games
+Name: 2129, dtype: object
+[2025-03-03T09:00:19.886+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-03-03T09:00:19.890+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=dag_ingest_data, task_id=add_new_data, execution_date=20250303T090017, start_date=20250303T090019, end_date=20250303T090019
+[2025-03-03T09:00:19.917+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-03-03T09:00:19.926+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
