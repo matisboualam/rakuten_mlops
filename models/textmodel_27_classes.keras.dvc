@@ -1,0 +1,5 @@
+outs:
+- md5: 68f9ccedee28b4f19380780683a6ac0d
+  size: 11206847
+  hash: md5
+  path: textmodel_27_classes.keras

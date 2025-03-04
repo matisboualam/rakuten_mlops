@@ -6797,3 +6797,291 @@ ModuleNotFoundError: No module named 'dags'
 [2025-03-04T17:30:44.166+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:30:44.166+0000] {dag.py:3036} INFO - Sync 1 DAGs
 [2025-03-04T17:30:44.175+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:30:44.175+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
 [2025-03-04T17:30:44.183+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.254 seconds
+[2025-03-04T17:31:14.314+0000] {processor.py:161} INFO - Started process (PID=56819) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:31:14.319+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:31:14.319+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:31:14.319+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:31:14.514+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:31:14.514+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:31:14.522+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:31:14.522+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:31:14.531+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:31:14.530+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:31:14.544+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.232 seconds
+[2025-03-04T17:31:45.125+0000] {processor.py:161} INFO - Started process (PID=56896) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:31:45.125+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:31:45.126+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:31:45.126+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:31:45.353+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:31:45.354+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:31:45.361+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:31:45.361+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:31:45.372+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:31:45.371+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:31:45.379+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.256 seconds
+[2025-03-04T17:32:15.747+0000] {processor.py:161} INFO - Started process (PID=56965) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:32:15.747+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:32:15.747+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:32:15.747+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:32:15.958+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:32:15.959+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:32:15.968+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:32:15.968+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:32:15.977+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:32:15.977+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:32:15.984+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.239 seconds
+[2025-03-04T17:32:46.076+0000] {processor.py:161} INFO - Started process (PID=57042) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:32:46.076+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:32:46.076+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:32:46.076+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:32:46.304+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:32:46.304+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:32:46.311+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:32:46.311+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:32:46.320+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:32:46.320+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:32:46.334+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.260 seconds
+[2025-03-04T17:33:16.766+0000] {processor.py:161} INFO - Started process (PID=57111) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:33:16.772+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:33:16.772+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:33:16.772+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:33:16.978+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:33:16.978+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:33:16.985+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:33:16.984+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:33:16.994+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:33:16.994+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:33:17.001+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.236 seconds
+[2025-03-04T17:33:47.713+0000] {processor.py:161} INFO - Started process (PID=57188) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:33:47.719+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:33:47.719+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:33:47.719+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:33:47.921+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:33:47.922+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:33:47.929+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:33:47.929+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:33:47.938+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:33:47.938+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:33:47.952+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.240 seconds
+[2025-03-04T17:34:18.365+0000] {processor.py:161} INFO - Started process (PID=57257) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:34:18.371+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:34:18.371+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:34:18.371+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:34:18.573+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:34:18.574+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:34:18.580+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:34:18.580+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:34:18.589+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:34:18.589+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:34:18.596+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.233 seconds
+[2025-03-04T17:34:48.895+0000] {processor.py:161} INFO - Started process (PID=57334) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:34:48.895+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:34:48.895+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:34:48.895+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:34:49.098+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:34:49.099+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:34:49.106+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:34:49.105+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:34:49.114+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:34:49.114+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:34:49.129+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.236 seconds
+[2025-03-04T17:35:19.864+0000] {processor.py:161} INFO - Started process (PID=57403) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:35:19.869+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:35:19.870+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:35:19.870+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:35:20.078+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:35:20.079+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:35:20.085+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:35:20.085+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:35:20.094+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:35:20.094+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:35:20.108+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.246 seconds
+[2025-03-04T17:35:50.222+0000] {processor.py:161} INFO - Started process (PID=57480) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:35:50.228+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:35:50.229+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:35:50.229+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:35:50.434+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:35:50.435+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:35:50.442+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:35:50.442+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:35:50.451+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:35:50.451+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:35:50.458+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.237 seconds
+[2025-03-04T17:36:20.522+0000] {processor.py:161} INFO - Started process (PID=57557) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:36:20.523+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:36:20.523+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:36:20.523+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:36:20.729+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:36:20.730+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:36:20.738+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:36:20.737+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:36:20.747+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:36:20.747+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:36:20.754+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.234 seconds
+[2025-03-04T17:36:50.853+0000] {processor.py:161} INFO - Started process (PID=57626) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:36:50.858+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:36:50.859+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:36:50.858+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:36:51.071+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:36:51.078+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:36:51.086+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:36:51.086+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:36:51.096+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:36:51.095+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:36:51.103+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.252 seconds
+[2025-03-04T17:37:21.129+0000] {processor.py:161} INFO - Started process (PID=57703) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:37:21.130+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:37:21.130+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:37:21.130+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:37:21.334+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:37:21.334+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:37:21.342+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:37:21.342+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:37:21.352+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:37:21.352+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:37:21.367+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.239 seconds
+[2025-03-04T17:37:51.494+0000] {processor.py:161} INFO - Started process (PID=57772) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:37:51.500+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:37:51.500+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:37:51.500+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:37:51.697+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:37:51.698+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:37:51.706+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:37:51.706+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:37:51.715+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:37:51.715+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:37:51.721+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.228 seconds
+[2025-03-04T17:38:21.887+0000] {processor.py:161} INFO - Started process (PID=57849) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:38:21.893+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:38:21.894+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:38:21.894+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:38:22.109+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:38:22.110+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:38:22.118+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:38:22.118+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:38:22.128+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:38:22.128+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:38:22.143+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.256 seconds
+[2025-03-04T17:38:52.746+0000] {processor.py:161} INFO - Started process (PID=57918) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:38:52.747+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:38:52.747+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:38:52.747+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:38:52.976+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:38:52.976+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:38:52.984+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:38:52.983+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:38:52.993+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:38:52.993+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:38:53.001+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.255 seconds
+[2025-03-04T17:39:25.030+0000] {processor.py:161} INFO - Started process (PID=57995) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:39:25.031+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:39:25.031+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:39:25.031+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:39:25.262+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:39:25.263+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:39:25.270+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:39:25.270+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:39:25.280+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:39:25.280+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:39:25.296+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.267 seconds
+[2025-03-04T17:39:55.595+0000] {processor.py:161} INFO - Started process (PID=58072) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:39:55.599+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:39:55.600+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:39:55.600+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:39:55.813+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:39:55.814+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:39:55.822+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:39:55.821+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:39:55.831+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:39:55.831+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:39:55.840+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.246 seconds
+[2025-03-04T17:40:26.456+0000] {processor.py:161} INFO - Started process (PID=58141) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:40:26.456+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:40:26.456+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:40:26.456+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:40:26.674+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:40:26.675+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:40:26.682+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:40:26.682+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:40:26.692+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:40:26.692+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:40:26.700+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.245 seconds
+[2025-03-04T17:40:56.761+0000] {processor.py:161} INFO - Started process (PID=58218) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:40:56.762+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:40:56.762+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:40:56.762+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:40:56.968+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:40:56.969+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:40:56.976+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:40:56.976+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:40:56.986+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:40:56.986+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:40:56.992+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.232 seconds
+[2025-03-04T17:41:27.021+0000] {processor.py:161} INFO - Started process (PID=58287) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:41:27.028+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:41:27.028+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:41:27.028+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:41:27.225+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:41:27.226+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:41:27.233+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:41:27.233+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:41:27.242+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:41:27.242+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:41:27.256+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.236 seconds
+[2025-03-04T17:41:57.326+0000] {processor.py:161} INFO - Started process (PID=58363) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:41:57.332+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:41:57.332+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:41:57.332+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:41:57.547+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:41:57.548+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:41:57.555+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:41:57.554+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:41:57.565+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:41:57.565+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:41:57.580+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.255 seconds
+[2025-03-04T17:42:27.730+0000] {processor.py:161} INFO - Started process (PID=58434) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:42:27.730+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:42:27.731+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:42:27.730+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:42:27.939+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:42:27.939+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:42:27.946+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:42:27.946+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:42:27.954+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:42:27.954+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:42:27.964+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.235 seconds
+[2025-03-04T17:42:58.136+0000] {processor.py:161} INFO - Started process (PID=58503) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:42:58.136+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:42:58.137+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:42:58.137+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:42:58.345+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:42:58.345+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:42:58.353+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:42:58.353+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:42:58.364+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:42:58.364+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:42:58.379+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.244 seconds
+[2025-03-04T17:43:30.390+0000] {processor.py:161} INFO - Started process (PID=58580) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:43:30.390+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:43:30.390+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:43:30.390+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:43:30.599+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:43:30.600+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:43:30.607+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:43:30.606+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:43:30.616+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:43:30.616+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:43:30.624+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.236 seconds
+[2025-03-04T17:44:00.829+0000] {processor.py:161} INFO - Started process (PID=58657) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:44:00.830+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:44:00.830+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:44:00.830+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:44:01.052+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:44:01.053+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:44:01.060+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:44:01.060+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:44:01.070+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:44:01.070+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:44:01.077+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.249 seconds
+[2025-03-04T17:44:31.204+0000] {processor.py:161} INFO - Started process (PID=58726) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:44:31.210+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:44:31.211+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:44:31.210+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:44:31.434+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:44:31.435+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:44:31.442+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:44:31.442+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:44:31.453+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:44:31.452+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:44:31.467+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.264 seconds
+[2025-03-04T17:45:02.085+0000] {processor.py:161} INFO - Started process (PID=58803) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:45:02.090+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:45:02.091+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:45:02.091+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:45:02.310+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:45:02.311+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:45:02.319+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:45:02.319+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:45:02.330+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:45:02.330+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:45:02.338+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.254 seconds
+[2025-03-04T17:45:32.543+0000] {processor.py:161} INFO - Started process (PID=58872) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:45:32.548+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:45:32.548+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:45:32.548+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:45:32.814+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:45:32.815+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:45:32.822+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:45:32.822+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:45:32.832+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:45:32.832+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:45:32.839+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.298 seconds
+[2025-03-04T17:46:02.880+0000] {processor.py:161} INFO - Started process (PID=58950) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:46:02.882+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:46:02.883+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:46:02.883+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:46:03.178+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:46:03.179+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:46:03.186+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:46:03.186+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:46:03.196+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:46:03.196+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:46:03.205+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.328 seconds
+[2025-03-04T17:46:33.266+0000] {processor.py:161} INFO - Started process (PID=59019) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:46:33.269+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:46:33.270+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:46:33.269+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:46:33.536+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:46:33.537+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:46:33.545+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:46:33.545+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:46:33.555+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:46:33.555+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:46:33.570+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.308 seconds
+[2025-03-04T17:47:03.695+0000] {processor.py:161} INFO - Started process (PID=59096) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:47:03.697+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:47:03.698+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:47:03.698+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:47:03.990+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:47:03.991+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:47:03.999+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:47:03.999+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:47:04.010+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:47:04.010+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:47:04.026+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.336 seconds
+[2025-03-04T17:47:34.248+0000] {processor.py:161} INFO - Started process (PID=59166) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:47:34.253+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:47:34.254+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:47:34.254+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:47:34.542+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:47:34.543+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:47:34.551+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:47:34.551+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:47:34.560+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:47:34.560+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:47:34.575+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.330 seconds
+[2025-03-04T17:48:04.919+0000] {processor.py:161} INFO - Started process (PID=59243) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:48:04.925+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:48:04.925+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:48:04.925+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:48:05.185+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:48:05.186+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:48:05.192+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:48:05.192+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:48:05.203+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:48:05.203+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:48:05.218+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.300 seconds
+[2025-03-04T17:48:35.702+0000] {processor.py:161} INFO - Started process (PID=59313) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:48:35.705+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:48:35.706+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:48:35.705+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:48:36.017+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:48:36.018+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:48:36.026+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:48:36.026+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:48:36.037+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:48:36.037+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:48:36.049+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.351 seconds
+[2025-03-04T17:49:06.493+0000] {processor.py:161} INFO - Started process (PID=59390) to work on /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:49:06.496+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dag_train_model.py for tasks to queue
+[2025-03-04T17:49:06.497+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:49:06.496+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:49:06.802+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py:437 RemovedInAirflow3Warning: provide_context is deprecated as of 2.0 and is no longer required
+[2025-03-04T17:49:06.803+0000] {processor.py:840} INFO - DAG(s) 'dag_train_model' retrieved from /opt/airflow/dags/dag_train_model.py
+[2025-03-04T17:49:06.812+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:49:06.811+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-03-04T17:49:06.824+0000] {logging_mixin.py:188} INFO - [2025-03-04T17:49:06.824+0000] {dag.py:3823} INFO - Setting next_dagrun for dag_train_model to 2025-03-04 17:30:00+00:00, run_after=2025-03-04 18:00:00+00:00
+[2025-03-04T17:49:06.837+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dag_train_model.py took 0.347 seconds
