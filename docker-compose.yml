@@ -19,23 +19,26 @@ services:
       fi
       "
 
-  modeling:
-    build: docker_services/modeling/
-    container_name: modeling
-    ports:
-      - "8081:8081"  # Changed from 8080 to 8081
-    volumes:
-      - .:/workspace
-    stdin_open: true
-    tty: true
-    command: >
-      mlflow server --host 0.0.0.0 --port 8081 --backend-store-uri sqlite:///mlflow.db --default-artifact-root /workspace/mlruns
+  # modeling:
+  #   build: docker_services/modeling/
+  #   container_name: modeling
+  #   ports:
+  #     - "5000:5000"  # MLflow sur le port 5000
+  #   volumes:
+  #     - .:/workspace
+  #   stdin_open: true
+  #   tty: true
+  #   command: >
+  #     mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:///mlflow.db --default-artifact-root /workspace/mlruns
 
   deployment:
     build: docker_services/deployment/
     container_name: deployment
+    # depends_on:
+    #   - modeling
     ports:
-      - "8000:8000"
+      - "5000:5000"
+      - "5001:5001"  # API FastAPI sur 5001
     volumes:
       - .:/workspace
     networks:
@@ -43,9 +46,8 @@ services:
     stdin_open: true
     tty: true
     command: >
-      uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+      /bin/sh -c "uvicorn app:app --host 0.0.0.0 --port 5001 --reload & mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:///mlflow.db --default-artifact-root /workspace/mlruns"
 
-  # ✅ Airflow Services
   airflow-webserver:
     image: apache/airflow:2.7.2
     container_name: airflow_webserver
@@ -61,8 +63,8 @@ services:
     volumes:
       - .:/opt/
     ports:
-      - "8080:8080"  # Now using 8080 instead of 8081
-    command: airflow webserver --port 8080
+      - "8000:8000"  # Interface Web Airflow inchangée
+    command: airflow webserver --port 8000
 
   airflow-scheduler:
     image: apache/airflow:2.7.2

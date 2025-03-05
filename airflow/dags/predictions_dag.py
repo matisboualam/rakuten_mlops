@@ -6,7 +6,7 @@ from airflow.operators.python import PythonOperator
 import requests
 from datetime import datetime, timedelta
 
-API_URL = "http://deployment:8000"  # Replace with the correct URL
+API_URL = "http://deployment:5001"  # Replace with the correct URL
 
 def generate_indices(csv, **kwargs):
     df = pd.read_csv(csv)

@@ -20,6 +20,3 @@ RUN pip install --no-cache-dir --upgrade pip \
 
 # Expose port 8000 for JupyterLab
 EXPOSE 8000
-
-# Set default command to launch JupyterLab
-# CMD ["jupyter", "lab", "--allow-root", "--port=8000", "--no-browser", "--ip=0.0.0.0", "--NotebookApp.token=''"]

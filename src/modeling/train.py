@@ -3,16 +3,20 @@ import tensorflow as tf
 import mlflow
 import mlflow.keras
 import numpy as np
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+from sklearn.metrics import accuracy_score, classification_report
 
 from models import Model
-from mlflow.models import infer_signature
 
-MLFLOW_TRACKING_URI = "http://localhost:8080"
-MLFLOW_EXPERIMENT_NAME = "train_image_model"
-
+MLFLOW_TRACKING_URI = "http://0.0.0.0:5000"  # If using Docker Desktop on Mac/Windows
 mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
-mlflow.set_experiment(MLFLOW_EXPERIMENT_NAME)
+
+experiment_name = "train_image_model"
+try:
+    experiment = mlflow.create_experiment(experiment_name)
+except mlflow.exceptions.MlflowException:
+    # If experiment already exists, set it
+    mlflow.set_experiment(experiment_name)
+
 
 def train_image_model(model_path, train_data_path, val_data_path, test_data_path=None, nb_epochs=1):
     """Train an image classification model and track performance with MLflow."""

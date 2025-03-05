@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 from fastapi import FastAPI
 
 from src.modeling.models import Model
@@ -67,4 +68,17 @@ async def feedback(indice: int, predicted_class: str):
         }
     except Exception as e:
         return {"error": str(e)}
+
+@app.post("/split_data")
+def train_model():
+    command = "python /workspace/src/preprocessing/split.py"
+    os.system(command)
+    return {"message": "Splitting started successfully."}
+
+@app.post("/train")
+def train_model():
+    command = "python /workspace/src/modeling/train.py"
+    os.system(command)
+    return {"message": "Training started successfully."}
+
 
