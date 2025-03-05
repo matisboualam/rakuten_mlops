@@ -18,5 +18,3 @@ RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir --ignore-installed -r requirements.txt
 
 
-# Expose port 8000 for JupyterLab
-EXPOSE 8000

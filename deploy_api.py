@@ -5,22 +5,20 @@ from fastapi import FastAPI
 from src.modeling.models import Model
 
 # Définition de l'application FastAPI
-app = FastAPI()
+deploy_api = FastAPI()
 
-model_weights = "/workspace/models/image_model_MobileNet.keras"
-MLFLOW_TRACKING_URI = "/workspace/mlruns/2/5f23b7c819544fc49e6fb53206cad84a/artifacts/image_classification_model/"
+model_weights = "models:/ImageClassificationModel/1"
 
 print(f"Loading model ...")
 model = Model(
-    img_model_weights=model_weights,
-    # mlflow_img_model_weights=MLFLOW_TRACKING_URI
+    img_model_weights=model_weights
     )
 print("Model loaded successfully.")
 
 user_data = pd.read_csv('data/processed/unseen.csv')
 train_data = pd.read_csv('data/processed/data.csv')
 
-@app.post("/predict")
+@deploy_api.post("/predict")
 async def predict(indice: int):
     """Prend un chemin d'image en entrée et retourne la classe prédite."""
     try:
@@ -41,7 +39,7 @@ async def predict(indice: int):
     except Exception as e:
         return {"error": str(e)}
 
-@app.post("/predict/feedback")
+@deploy_api.post("/predict/feedback")
 async def feedback(indice: int, predicted_class: str):
     """Enregistre le feedback de l'utilisateur dans un fichier CSV."""
     try:
@@ -69,16 +67,5 @@ async def feedback(indice: int, predicted_class: str):
     except Exception as e:
         return {"error": str(e)}
 
-@app.post("/split_data")
-def train_model():
-    command = "python /workspace/src/preprocessing/split.py"
-    os.system(command)
-    return {"message": "Splitting started successfully."}
-
-@app.post("/train")
-def train_model():
-    command = "python /workspace/src/modeling/train.py"
-    os.system(command)
-    return {"message": "Training started successfully."}
 
 

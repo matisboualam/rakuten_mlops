@@ -77,7 +77,7 @@ def train_image_model(model_path, train_data_path, val_data_path, test_data_path
         print(f"Training completed. Model and metrics logged in MLflow.")
 
 if __name__ == "__main__":
-    model_path = "/workspace/models/image_model_MobileNet.keras"
+    model_path = "models:/ImageClassificationModel/1"
     train_data_path = "/workspace/data/processed/train.csv"
     val_data_path = "/workspace/data/processed/val.csv"
     test_data_path = "/workspace/data/processed/test.csv"

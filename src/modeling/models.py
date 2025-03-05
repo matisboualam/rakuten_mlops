@@ -10,21 +10,22 @@ import json
 import mlflow
 import tensorflow as tf
 
+MLFLOW_TRACKING_URI = "http://modeling:5000"  # If using Docker Desktop on Mac/Windows
+mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
+
 class Model:
     def __init__(
             self, 
             txt_model_weights=None, 
             img_model_weights=None,
-            mlflow_img_model_weights=None,
             train_data_path=None, 
             val_data_path=None,
             ):
         if txt_model_weights is not None:
             self.txt_model = tf.keras.models.load_model(txt_model_weights)
-        if mlflow_img_model_weights is not None:
+        if img_model_weights is not None:
             self.img_model = mlflow.keras.load_model(img_model_weights)
-        elif img_model_weights is not None:
-            self.img_model = tf.keras.models.load_model(img_model_weights)
+        
         with open('/workspace/models/catalog.json', 'r') as f:
             self.catalog = json.load(f)
         self.train_data = train_data_path
