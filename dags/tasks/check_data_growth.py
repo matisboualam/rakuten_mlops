@@ -30,7 +30,8 @@ def check_data_growth(**context):
     if new_size - int(previous_size) >= THRESHOLD:
         # Stocker la nouvelle taille
         Variable.set("data_size", new_size)
-        return "process_data"
+
+        return "train_model"
 
     return "skip_training"
 

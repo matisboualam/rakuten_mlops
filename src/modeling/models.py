@@ -1,7 +1,7 @@
 import tensorflow as tf
 import numpy as np
-from dataloaders import ImagePreprocessor
-from dataloaders import TextPreprocessor
+from modeling.dataloaders import ImagePreprocessor
+from modeling.dataloaders import TextPreprocessor
 import os
 # Imports nécessaires
 import tensorflow as tf
@@ -17,19 +17,20 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.utils.class_weight import compute_class_weight
 from sklearn.metrics import classification_report
-from keras.models import Model
-from keras.layers import Input, Dense, GRU, Bidirectional, Dropout, BatchNormalization, Attention, Reshape, Conv1D, MaxPooling1D
-from keras.utils import to_categorical
-from keras.optimizers import Adam
-from keras.callbacks import ReduceLROnPlateau, EarlyStopping, ModelCheckpoint
+from tensorflow.keras.models import Model  # Changement ici
+from tensorflow.keras.layers import Input, Dense, GRU, Bidirectional, Dropout, BatchNormalization, Attention, Reshape, Conv1D, MaxPooling1D  # Changement ici
+from tensorflow.keras.utils import to_categorical  # Changement ici
+from tensorflow.keras.optimizers import Adam  # Changement ici
+from tensorflow.keras.callbacks import ReduceLROnPlateau, EarlyStopping, ModelCheckpoint  # Changement ici
 import gensim.downloader as api
 from sklearn.preprocessing import LabelEncoder
-from keras.utils import to_categorical
+from tensorflow.keras.utils import to_categorical  # Changement ici
 import unicodedata
 import mlflow
 import mlflow.keras
 import json
 from sklearn.metrics import classification_report
+
 
 
 catalog = [
@@ -73,16 +74,16 @@ mlflow.set_tracking_uri("http://localhost:5000")
 # Charger le modèle d'embeddings pré-entraîné FastText
 word2vec_model = api.load('fasttext-wiki-news-subwords-300')
     
-class Model:
+class CustomModel:
     def __init__(self, txt_model_weights=None, img_model_weights=None):
         if txt_model_weights is not None:
             self.txt_model = tf.keras.models.load_model(txt_model_weights)
         if img_model_weights is not None:
             self.img_model = tf.keras.models.load_model(img_model_weights)
         self.catalog = catalog
-        self.train_data = '/opt/airflow/data/processed/train.csv'
-        self.validation_data = '/opt/airflow/data/processed/val.csv'
-        self.test_data = '/opt/airflow/data/processed/test.csv'
+        self.train_data = '/workspace/data/processed/train.csv'
+        self.validation_data = '/workspace/data/processed/val.csv'
+        self.test_data = '/workspace/data/processed/test.csv'
         if os.path.exists(self.train_data) and os.path.exists(self.validation_data):
             self.img_preprocessor = ImagePreprocessor(self.train_data, self.validation_data,self.test_data)
             self.txt_preprocessor = TextPreprocessor(self.train_data, self.validation_data,self.test_data)
@@ -252,6 +253,6 @@ DATA_PATH = "data/processed/train.csv"
 df = pd.read_csv(DATA_PATH)
 
 # Création de l'instance de prétraitement
-model = Model(TEXT_MODEL_PATH)
+model = CustomModel(TEXT_MODEL_PATH)
 
 model.train_text()

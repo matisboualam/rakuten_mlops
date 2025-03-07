@@ -1,9 +1,11 @@
 from airflow import DAG
-from airflow.operators.python import BranchPythonOperator
+from airflow.operators.python import BranchPythonOperator, PythonOperator
 from airflow.operators.dummy import DummyOperator
 from datetime import datetime, timedelta
+import requests
 from tasks.check_data_growth import check_data_growth
 
+# Définir les arguments par défaut
 default_args = {
     'owner': 'airflow',
     'start_date': datetime(2024, 2, 25),
@@ -11,12 +13,26 @@ default_args = {
     'retry_delay': timedelta(minutes=1),
 }
 
+# Création du DAG
 dag = DAG(
     'dag_train_model',
     default_args=default_args,
     schedule_interval="*/30 * * * *",
     catchup=False
 )
+
+# Nom du service Docker (conteneur Dev)
+API_URL = "http://tensorflow:8001"
+
+# Fonction pour appeler l'API
+def call_api(endpoint: str):
+    url = f"{API_URL}/{endpoint}"
+    try:
+        response = requests.post(url)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        return {"error": str(e)}
 
 # Tâche pour vérifier la croissance des données
 check_data_task = BranchPythonOperator(
@@ -28,15 +44,26 @@ check_data_task = BranchPythonOperator(
 
 # Tâche "skip_training" pour indiquer que l'entraînement ne doit pas être effectué
 skip_training_task = DummyOperator(
-    task_id='skip_training',  # Ceci est maintenant une tâche valide
+    task_id='skip_training',  
     dag=dag
 )
 
-# Tâche "process_data" pour l'entraînement des données
-process_data_task = DummyOperator(
-    task_id='process_data',  # Remplacer par votre tâche d'entraînement réelle
-    dag=dag
+# Tâche pour diviser les données (appelle `/split_data`)
+split_data_task = PythonOperator(
+    task_id="split_data",
+    python_callable=call_api,
+    op_kwargs={"endpoint": "split_data"},
+    dag=dag,
 )
 
-# Définir les dépendances entre les tâches
-check_data_task >> [process_data_task, skip_training_task]
+# Tâche pour entraîner le modèle (appelle `/train`)
+train_model_task = PythonOperator(
+    task_id="train_model",
+    python_callable=call_api,
+    op_kwargs={"endpoint": "train"},
+    dag=dag,
+)
+
+# Définition du flow des tâches
+check_data_task >> [skip_training_task, split_data_task]
+split_data_task >> train_model_task
