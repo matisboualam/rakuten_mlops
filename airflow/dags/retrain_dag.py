@@ -6,7 +6,7 @@ from airflow.operators.python import PythonOperator
 import requests
 from datetime import datetime, timedelta
 
-API_URL = "http://deployment:5001"  # Replace with the correct URL
+API_URL = "http://modeling:5001"  # Replace with the correct URL
 
 def split_data():
     response = requests.post(os.path.join(API_URL, 'split_data'))
@@ -23,6 +23,14 @@ def launch_train():
     else:
         raise Exception(f"Failed to send feedback: {response.status_code}, {response.text}")
 
+def evaluate_models():
+    response = requests.post(os.path.join(API_URL, 'evaluate'))
+    if response.status_code == 200:
+        print("Evaluation launched:")
+    else:
+        raise Exception(f"Failed to send feedback: {response.status_code}, {response.text}")
+    
+
 # Airflow DAG definition
 default_args = {
     'owner': 'airflow',
@@ -34,7 +42,7 @@ default_args = {
 dag = DAG(
     'retrain_dag',
     default_args=default_args,
-    schedule_interval="0 * * * *",  # Runs every hour
+    schedule_interval=None,  # Do not schedule, only run manually
     catchup=False
 )
 
@@ -50,4 +58,10 @@ task_1 = PythonOperator(
     dag=dag
 )
 
-task_0 >> task_1
+task_2 = PythonOperator(
+    task_id='evaluate_model_trained',
+    python_callable=evaluate_models,
+    dag=dag
+)
+
+task_0 >> task_1 >> task_2

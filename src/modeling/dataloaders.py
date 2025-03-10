@@ -3,7 +3,7 @@ import pandas as pd
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 class ImagePreprocessor:
-    def __init__(self, image_size=(224, 224), batch_size=8):
+    def __init__(self, image_size=(224, 224), batch_size=4):
         """
         Initialize the ImagePreprocessor class.
         

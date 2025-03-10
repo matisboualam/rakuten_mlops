@@ -10,8 +10,8 @@ def split_data(input_csv, test_size, val_size):
     assert 0 < val_size < 1, "val_size must be between 0 and 1"
     # assert unseen_size + test_size + val_size < 1, "Sum of unseen, test, and val sizes must be less than 1"
 
-    train_df, temp_df = train_test_split(df, test_size=(test_size + val_size), random_state=42)
-    val_df, test_df = train_test_split(temp_df, test_size=test_size / (test_size + val_size), random_state=42)
+    train_df, temp_df = train_test_split(df, test_size=(test_size + val_size), random_state=42, stratify=df["prdtypecode"])
+    val_df, test_df = train_test_split(temp_df, test_size=test_size / (test_size + val_size), random_state=42, stratify=temp_df["prdtypecode"])
 
     train_df.to_csv("data/processed/train.csv", index=False)
     val_df.to_csv("data/processed/val.csv", index=False)

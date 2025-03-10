@@ -7,8 +7,6 @@ from sklearn.metrics import accuracy_score, classification_report
 
 from models import Model
 
-MLFLOW_TRACKING_URI = "http://0.0.0.0:5000"  # If using Docker Desktop on Mac/Windows
-mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
 
 experiment_name = "train_image_model"
 try:

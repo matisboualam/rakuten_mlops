@@ -61,6 +61,9 @@ def format_csv(x_csv, y_csv, unseen_size):
     print(f"Number of lines in 'data.csv': {len(data_df)}")
     print(f"Number of lines in 'unseen.csv': {len(unseen_df)}")
 
+    # Remove write protection from data.csv
+    os.chmod('data/processed/data.csv', 0o666)
+
 if __name__ == "__main__":
     x_data_path = '/workspace/data/raw/x_data.csv'
     y_data_path = '/workspace/data/raw/y_data.csv'

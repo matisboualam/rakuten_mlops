@@ -26,3 +26,9 @@ def train_model():
     command = "python /workspace/src/modeling/train.py"
     os.system(command)
     return {"message": "Training started successfully."}
+
+@model_api.post("/evaluate")
+def evaluate_model():
+    command = "python /workspace/src/modeling/evaluate.py"
+    os.system(command)
+    return {"message": "Evaluation started successfully."}

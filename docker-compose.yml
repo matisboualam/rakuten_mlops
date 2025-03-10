@@ -8,14 +8,14 @@ services:
       - .:/workspace
     stdin_open: true
     tty: true
-    command: >
+    command: |
       /bin/sh -c "
       if [ -f data/processed/data.csv ]; then
-        echo '✅ File data/processed/data.csv exists. Running: dvc repro split';
-        dvc repro split;
+      echo '✅ File data/processed/data.csv exists. Running: dvc repro split';
+      dvc repro split;
       else
-        echo '⚠️ File data/processed/data.csv not found. Running: dvc repro';
-        dvc repro;
+      echo '⚠️ File data/processed/data.csv not found. Running: dvc repro';
+      dvc repro;
       fi
       "
 
@@ -37,8 +37,8 @@ services:
   deployment:
     build: docker_services/deployment/
     container_name: deployment
-    # depends_on:
-    #   - modeling
+    depends_on:
+      - modeling
     ports:
       - "8080:8080"  # API FastAPI sur 5001
     volumes:
@@ -48,7 +48,9 @@ services:
     stdin_open: true
     tty: true
     command: >
-      /bin/sh -c "uvicorn deploy_api:deploy_api --host 0.0.0.0 --port 8080 --reload"
+      /bin/sh -c "
+      mkdir -p /workspace/data/processed/tmp &&
+      uvicorn deploy_api:deploy_api --host 0.0.0.0 --port 8080 --reload"
 
   airflow-webserver:
     image: apache/airflow:2.7.2
