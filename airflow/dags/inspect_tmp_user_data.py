@@ -25,7 +25,7 @@ TMP_CSV_FILE_PATH = "../data/processed/tmp/tmp_predicted_data.csv"
 DATA_CSV_FILE_PATH = "../data/processed/data.csv"
 TARGET_DAG_ID = "retrain_dag"  # DAG to be triggered if condition met
 
-# Function to check CSV length
+# Function to check CSV length and generate accuracy report
 def check_csv_length(**kwargs):
 
     log = LoggingMixin().log
@@ -41,6 +41,10 @@ def check_csv_length(**kwargs):
         
         log.info(f"Row count: {row_count}")
         log.info(f"Unique 'prdtypecode' count: {unique_prdtypecode_count}")
+        
+        # Generate accuracy report
+        accuracy_report = df.groupby('prdtypecode')['img_prediction_status'].value_counts(normalize=True).unstack().fillna(0)
+        log.info(f"Accuracy report:\n{accuracy_report}")
         
         result = row_count >= 100 and unique_prdtypecode_count == 27  # Check conditions
         log.info(f"Condition met: {result}")

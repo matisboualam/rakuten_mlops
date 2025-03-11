@@ -20,8 +20,8 @@ train_data = pd.read_csv('data/processed/data.csv')
 
 # Create tmp_predicted_data.csv file
 tmp_predicted_data_path = 'data/processed/tmp/tmp_predicted_data.csv'
-# Create an empty tmp_predicted_data.csv file
-pd.DataFrame(columns=['image_path', 'description', 'prdtypecode']).to_csv(tmp_predicted_data_path, index=False)
+# Create an empty tmp_predicted_data.csv file with a img_prediction_status column
+pd.DataFrame(columns=['image_path', 'description', 'prdtypecode', 'img_prediction_status']).to_csv(tmp_predicted_data_path, index=False)
 
 # Register atexit function to delete the file when the API is closed
 def cleanup():
@@ -60,16 +60,19 @@ async def feedback(indice: int, predicted_class: str):
         input = user_data.iloc[indice]
 
         feedback_message = ""
+        img_prediction_status = 0
         if input['prdtypecode'] == predicted_class:
             feedback_message = '✅ Correct prediction!'
+            img_prediction_status = 1
         else:
             feedback_message = '⚠️ Incorrect prediction!'
+            img_prediction_status = 0
 
         # Check if the data is already in the temporary CSV file
         tmp_data = pd.read_csv(tmp_predicted_data_path)
         if not ((tmp_data['image_path'] == input['image_path']) & (tmp_data['description'] == input['description'])).any():
-            # Append the feedback data to the temporary CSV file
-            input.to_frame().T.to_csv(tmp_predicted_data_path, mode='a', header=False, index=False)
+            # Append the feedback data to the temporary CSV file with img_prediction_status
+            input.to_frame().T.assign(img_prediction_status=img_prediction_status).to_csv(tmp_predicted_data_path, mode='a', header=False, index=False)
 
         return {
             "message": "Feedback recorded successfully.",
@@ -93,7 +96,7 @@ async def merge_data():
         print(f"Original data length: {original_length}")
 
         # Concatenate the dataframes and drop duplicates
-        combined_data = pd.concat([train_data, tmp_data]).drop_duplicates(subset=['image_path', 'description'])
+        combined_data = pd.concat([train_data, tmp_data.drop(columns=['img_prediction_status'])]).drop_duplicates(subset=['image_path', 'description'])
 
         # Save the combined data back to the main data file
         combined_data.to_csv('data/processed/data.csv', index=False)
@@ -106,7 +109,7 @@ async def merge_data():
         print(f"Combined data length: {combined_length}")
 
         # Clean the temporary CSV file
-        pd.DataFrame(columns=['image_path', 'description', 'prdtypecode']).to_csv(tmp_predicted_data_path, index=False)
+        pd.DataFrame(columns=['image_path', 'description', 'prdtypecode', 'img_prediction_status']).to_csv(tmp_predicted_data_path, index=False)
 
         return {"message": "Data merged and temporary file cleaned successfully.", "original_length": original_length, "combined_length": combined_length}
     except Exception as e:

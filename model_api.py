@@ -7,7 +7,7 @@ from src.modeling.models import Model
 # Définition de l'application FastAPI
 model_api = FastAPI()
 
-model_weights = "models:/ImageClassificationModel/1"
+model_weights = "models:/ImageClassificationModel/10"
 
 print(f"Loading model ...")
 model = Model(

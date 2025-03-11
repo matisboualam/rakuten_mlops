@@ -85,7 +85,7 @@ services:
   airflow-init:
     image: apache/airflow:2.7.2
     container_name: airflow_init
-    entrypoint: ["bash", "-c", "airflow db init"]
+    entrypoint: ["bash", "-c", "airflow db init && airflow users create --username admin --firstname Admin --lastname User --email admin@example.com --role Admin --password admin"]
     networks:
       - airflow_network
     volumes:
