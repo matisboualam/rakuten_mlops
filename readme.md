@@ -1,62 +1,70 @@
-# Plan de Projet : Monitoring et API de Classification pour Rakuten
+# Monitoring d'une Solution de Classification Multimodale
+
+Ce projet implémente un système de classification multimodale (texte et image) pour des articles issus d'un catalogue e-commerce, avec un pipeline de monitoring et d'entraînement automatisé.
 
 ## Structure du Projet
-```
-rakuten-classification/
-├── data/
-│   ├── raw/                 # Données brutes (X_data.csv, Y_data.csv, images)
-│   ├── processed/           # Données prétraitées (splits, features, etc.)
-│   ├── unseen/              # Données non vues pour simulation des requêtes utilisateur
-│   ├── splits/              # Données splitées (train/test/validation)
-│   ├── models/              # Modèles entraînés (text_model.pkl, image_model.pkl)
-├── src/
-│   ├── preprocessing/       # Scripts de nettoyage, augmentation et préparation des données
-│   ├── models/              # Scripts d'entraînement et d'inférence
-│   ├── api/                 # Code de l'API FastAPI
-│   ├── monitoring/          # Intégration de MLflow pour le suivi des expériences
-│   ├── simulation/          # Scripts de simulation de requêtes utilisateur
-│   ├── utils/               # Fonctions utilitaires
-├── notebooks/               # Notebooks pour l'exploration, tests et analyses
-├── docker/
-│   ├── Dockerfile           # Image Docker pour l'API
-│   ├── docker-compose.yml   # Configuration pour les conteneurs multiples
-├── mlflow/                  # Artifacts et logs de MLflow
-├── dvc.yaml                 # Pipeline DVC pour gérer les étapes de traitement
-├── dagshub/                 # Intégration pour suivi avec DagsHub
-├── requirements.txt         # Dépendances Python
-├── README.md                # Documentation du projet
-```
 
-## Étapes du Projet
+### 1. Airflow (Orchestration des tâches)
+- `airflow/airflow.cfg` : Configuration d'Airflow.
+- `airflow/airflow.db` : Base de données interne d'Airflow.
+- `airflow/dags/` : Contient les DAGs pour le traitement des données et l'entraînement du modèle.
+  - `inspect_tmp_user_data.py` : Inspection des données utilisateur temporaires.
+  - `predictions_dag.py` : Pipeline de génération des prédictions.
+  - `retrain_dag.py` : Pipeline d'entraînement des modèles.
+- `airflow/logs/` : Logs des DAGs et de l'exécution d'Airflow.
+- `airflow/webserver_config.py` : Configuration du serveur web d'Airflow.
 
-### 1. Préparation des Données
-1. Importer et organiser les données dans `data/raw`.
-2. Nettoyer et prétraiter les données (textes et images).
-3. Spliter les données en train/val/test et une partition "non vue".
-4. Utiliser DVC pour gérer les versions des données et transformations.
+### 2. Data (Jeux de données)
+- `data/raw/` : Données brutes (images et fichiers CSV d'origine).
+- `data/processed/` : Données prétraitées pour l'entraînement et l'évaluation du modèle.
+  - `train.csv`, `val.csv`, `test.csv` : Jeux de données prétraités.
+  - `unseen.csv` : Données non vues utilisées pour la prédiction.
 
-### 2. Développement des Modèles
-1. Entraîner ou charger le modèle textuel (text_model.pkl).
-2. Entraîner ou charger le modèle visuel (image_model.pkl).
-3. Implémenter la fusion des prédictions des deux modèles.
-4. Suivre les expérimentations avec MLflow.
+### 3. Déploiement et Conteneurisation
+- `deploy_api.py` : Script de déploiement de l'API.
+- `docker-compose.yml` : Configuration des services Docker.
+- `docker_services/` : Contient les configurations Docker pour différents services.
+  - `deployment/`, `dev/`, `modeling/`, `preprocessing/` : Conteneurs pour le déploiement, le développement, la modélisation et le prétraitement.
 
-### 3. Développement de l'API avec FastAPI
-1. Créer les endpoints principaux :
-   - **POST /predict** : prédiction sur une description/designation et/ou image.
-   - **POST /feedback** : soumettre une correction utilisateur.
-   - **POST /retrain** : lancer un entraînement sur les données mises à jour.
-2. Ajouter un système de gestion des droits utilisateurs.
-3. Tester l'API avec des tests unitaires et d'intégration.
-4. Containeriser l'API avec Docker et configurer `docker-compose.yml`.
+### 4. Suivi des Expérimentations
+- `mlflow.db` : Base de données MLflow pour le suivi des expériences.
+- `mlruns/` : Dossiers des runs d'expérimentation MLflow.
 
-### 4. Simulation des Requêtes Utilisateurs
-1. Écrire un script pour simuler des requêtes fictives à l'API.
-2. Utiliser les données "non vues" pour évaluer les performances en conditions réelles.
+### 5. Modèles et API
+- `model_api.py` : API pour servir les prédictions du modèle.
+- `models/catalog.json` : Fichier JSON contenant des informations sur les modèles sauvegardés.
 
-### 5. Pipeline d'Entraînement et de Déploiement
-1. Automatiser les étapes avec DVC (prétraitement, entraînement, sauvegarde des artefacts).
-2. Intégrer DVC et MLflow avec DagsHub pour le suivi.
-3. Déployer l'API sur un serveur (AWS, Azure, etc.).
-4. Configurer CI/CD avec GitHub Actions pour les tests et redéploiements automatiques.
+### 6. Notebooks
+- `notebooks/` : Contient des notebooks d'exploration et de modélisation des données.
+  - `data_exploration.ipynb` : Analyse exploratoire des données.
+  - `modelisation.ipynb` : Expérimentation avec les modèles.
+
+### 7. Code Source
+- `src/modeling/` : Code lié à l'entraînement et l'évaluation des modèles.
+  - `train.py` : Script d'entraînement du modèle.
+  - `models.py` : Définition des architectures de modèles.
+- `src/preprocessing/` : Scripts de prétraitement des données.
+  - `process.py` : Prétraitement des données textuelles et visuelles.
+
+### 8. Tests
+- `tests/` : Contient les tests unitaires et d'intégration.
+  - `test_dataloader.py` : Tests sur le chargement des données.
+  - `test_mlflow.py` : Tests liés au tracking MLflow.
+
+### 9. Autres fichiers importants
+- `params.yaml` : Fichier de configuration contenant les hyperparamètres et chemins des fichiers.
+- `dvc.yaml` et `dvc.lock` : Suivi et gestion des fichiers de données avec DVC.
+
+## Installation et Exécution
+1. Construire les conteneurs Docker :
+   ```bash
+   docker-compose up --build
+   ```
+2. Lancer Airflow :
+   ```bash
+   airflow scheduler & airflow webserver
+   ```
+3. Accéder aux logs et résultats via MLflow et Airflow UI.
+
+Ce projet vise à faciliter l'entraînement, la prédiction et le suivi des modèles de classification multimodale.
 
