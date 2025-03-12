@@ -12,7 +12,13 @@ services:
       /bin/sh -c "
       echo '🚀 Pulling latest DVC-tracked data...';
       dvc pull;
-      
+      # Check if workspace/data/raw/img/ exists and is not empty
+      if [ -d /workspace/data/raw/img ] && [ "$(ls -A /workspace/data/raw/img)" ]; then
+        echo '✅ Directory /workspace/data/raw/img exists and is not empty.';
+      else
+        echo '⚠️ Directory /workspace/data/raw/img does not exist or is empty. Unzipping images.zip...';
+        unzip /workspace/data/raw/images.zip -d /workspace/data/raw/img;
+      fi
       # Check if there are any changes after pulling
       if ! dvc status --quiet; then
         echo '✅ DVC data is up to date.';
