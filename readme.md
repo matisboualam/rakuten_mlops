@@ -4,7 +4,17 @@ Ce projet implémente un système de classification multimodale (texte et image)
 
 
 ## Installation et Exécution
-1. Construire les conteneurs Docker :
+0. Créer un compte sur la plateforme [challengedata](https://challengedata.ens.fr/login/)
+1. Télécharger le fichier images.zip en suivant le lien suivant: 
+  ```bash
+  https://challengedata.ens.fr/participants/challenges/35/download/supplementary-files
+  ``` 
+  puis le placer dans le dossier:
+  ```bash
+  /rakuten_mlops/data/raw/
+  ```
+
+2. Construire les conteneurs Docker :
    ```bash
    docker-compose up --build
    ```
