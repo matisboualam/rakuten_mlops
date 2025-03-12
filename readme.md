@@ -8,18 +8,16 @@ Ce projet implémente un système de classification multimodale (texte et image)
    ```bash
    docker-compose up --build
    ```
-2. Lancer Airflow :
-   ```bash
-   airflow scheduler & airflow webserver
-   ```
-3. Accéder aux logs et résultats via MLflow et Airflow UI.
-
-Ce projet vise à faciliter l'entraînement, la prédiction et le suivi des modèles de classification multimodale.
+2. Port List :
+    - Airflow : 0.0.0.0:5000 *(username: admin, mdp: admin)*
+    - MLFlow : 0.0.0.0:8000
+    - User API : 0.0.0.0:5001/docs
+    - Model API : 0.0.0.0:8080/docs
 
 ## Workflow
 
 
-![Description du bloc de modélisation](gallery_readme/workflow_description.png)
+![Visualisation du workflow complet](gallery_readme/workflow_description.png)
 
 ## Structure du Projet
 
@@ -80,7 +78,7 @@ Ce projet vise à faciliter l'entraînement, la prédiction et le suivi des mod�
 
 ### Preprocessing bloc :
 
-![Description du bloc de modélisation](gallery_readme/preprocessing_description.png)
+![Description du bloc de preprocessing](gallery_readme/preprocessing_description.png)
 
 ### Modeling bloc :
 
@@ -88,8 +86,8 @@ Ce projet vise à faciliter l'entraînement, la prédiction et le suivi des mod�
 
 ### Deployment bloc :
 
-![Description du bloc de modélisation](gallery_readme/deployment_description.png)
+![Description du bloc de déploiement](gallery_readme/deployment_description.png)
 
 ### Airflow bloc :
 
-![Description du bloc de modélisation](gallery_readme/airflow_description.png)
+![Description du bloc d'automatisation](gallery_readme/airflow_description.png)
