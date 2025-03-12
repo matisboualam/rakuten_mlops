@@ -10,15 +10,25 @@ services:
     tty: true
     command: |
       /bin/sh -c "
-      if [ -f data/processed/data.csv ]; then
-      echo '✅ File data/processed/data.csv exists. Running: dvc repro split';
-      dvc repro split;
+      echo '🚀 Pulling latest DVC-tracked data...';
+      dvc pull;
+      
+      # Check if there are any changes after pulling
+      if ! dvc status --quiet; then
+        echo '✅ DVC data is up to date.';
       else
-      echo '⚠️ File data/processed/data.csv not found. Running: dvc repro';
-      dvc repro;
+        echo '🔄 DVC detected changes!';
+      fi
+
+      # Check if processed data exists and run appropriate command
+      if [ -f data/processed/data.csv ]; then
+        echo '✅ File data/processed/data.csv exists. Running: dvc repro split';
+        dvc repro split;
+      else
+        echo '⚠️ File data/processed/data.csv not found. Running: dvc repro';
+        dvc repro;
       fi
       "
-
   modeling:
     build: docker_services/deployment/
     container_name: modeling
