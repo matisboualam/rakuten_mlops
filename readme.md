@@ -8,11 +8,14 @@ Ce projet implémente un système de classification multimodale (texte et image)
    ```bash
    docker-compose up --build
    ```
-2. Port List :
-    - Airflow : 0.0.0.0:5000 *(username: admin, mdp: admin)*
-    - MLFlow : 0.0.0.0:8000
-    - User API : 0.0.0.0:5001/docs
-    - Model API : 0.0.0.0:8080/docs
+## Port List
+
+| Service    | URL                     | Credentials          |
+|------------|-------------------------|----------------------|
+| Airflow    | [0.0.0.0:5000](http://0.0.0.0:5000) | username: admin, mdp: admin |
+| MLFlow     | [0.0.0.0:8000](http://0.0.0.0:8000) | -                    |
+| User API   | [0.0.0.0:5001/docs](http://0.0.0.0:5001/docs) | -                    |
+| Model API  | [0.0.0.0:8080/docs](http://0.0.0.0:8080/docs) | -                    |
 
 ## Workflow
 
