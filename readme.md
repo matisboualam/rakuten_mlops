@@ -2,6 +2,25 @@
 
 Ce projet implémente un système de classification multimodale (texte et image) pour des articles issus d'un catalogue e-commerce, avec un pipeline de monitoring et d'entraînement automatisé.
 
+
+## Installation et Exécution
+1. Construire les conteneurs Docker :
+   ```bash
+   docker-compose up --build
+   ```
+2. Lancer Airflow :
+   ```bash
+   airflow scheduler & airflow webserver
+   ```
+3. Accéder aux logs et résultats via MLflow et Airflow UI.
+
+Ce projet vise à faciliter l'entraînement, la prédiction et le suivi des modèles de classification multimodale.
+
+## Workflow
+
+
+![Description du bloc de modélisation](gallery_readme/workflow_description.png)
+
 ## Structure du Projet
 
 ### 1. Airflow (Orchestration des tâches)
@@ -18,10 +37,9 @@ Ce projet implémente un système de classification multimodale (texte et image)
 - `data/raw/` : Données brutes (images et fichiers CSV d'origine).
 - `data/processed/` : Données prétraitées pour l'entraînement et l'évaluation du modèle.
   - `train.csv`, `val.csv`, `test.csv` : Jeux de données prétraités.
-  - `unseen.csv` : Données non vues utilisées pour la prédiction.
+  - `unseen.csv` : Données non vues utilisées pour les prédictions utilisateurs automatisées.
 
 ### 3. Déploiement et Conteneurisation
-- `deploy_api.py` : Script de déploiement de l'API.
 - `docker-compose.yml` : Configuration des services Docker.
 - `docker_services/` : Contient les configurations Docker pour différents services.
   - `deployment/`, `dev/`, `modeling/`, `preprocessing/` : Conteneurs pour le déploiement, le développement, la modélisation et le prétraitement.
@@ -31,8 +49,9 @@ Ce projet implémente un système de classification multimodale (texte et image)
 - `mlruns/` : Dossiers des runs d'expérimentation MLflow.
 
 ### 5. Modèles et API
-- `model_api.py` : API pour servir les prédictions du modèle.
-- `models/catalog.json` : Fichier JSON contenant des informations sur les modèles sauvegardés.
+- `deploy_api.py` : API relative aux interactions utilisateur.
+- `model_api.py` : API relative au monitoring des modèles.
+- `models/catalog.json` : Fichier JSON contenant les relations entre code produit et label produit.
 
 ### 6. Notebooks
 - `notebooks/` : Contient des notebooks d'exploration et de modélisation des données.
@@ -43,6 +62,8 @@ Ce projet implémente un système de classification multimodale (texte et image)
 - `src/modeling/` : Code lié à l'entraînement et l'évaluation des modèles.
   - `train.py` : Script d'entraînement du modèle.
   - `models.py` : Définition des architectures de modèles.
+  - `dataloaders.py` : Définition des classes objets permettant de charger et prétraiter les données.
+  - `evaluate.py` : Script de réévaluation du modèle mis en production et du dernier modèle entrainé.
 - `src/preprocessing/` : Scripts de prétraitement des données.
   - `process.py` : Prétraitement des données textuelles et visuelles.
 
@@ -55,16 +76,20 @@ Ce projet implémente un système de classification multimodale (texte et image)
 - `params.yaml` : Fichier de configuration contenant les hyperparamètres et chemins des fichiers.
 - `dvc.yaml` et `dvc.lock` : Suivi et gestion des fichiers de données avec DVC.
 
-## Installation et Exécution
-1. Construire les conteneurs Docker :
-   ```bash
-   docker-compose up --build
-   ```
-2. Lancer Airflow :
-   ```bash
-   airflow scheduler & airflow webserver
-   ```
-3. Accéder aux logs et résultats via MLflow et Airflow UI.
+## Blocs d'automatisation 
 
-Ce projet vise à faciliter l'entraînement, la prédiction et le suivi des modèles de classification multimodale.
+### Preprocessing bloc :
 
+![Description du bloc de modélisation](gallery_readme/preprocessing_description.png)
+
+### Modeling bloc :
+
+![Description du bloc de modélisation](gallery_readme/modeling_description.png)
+
+### Deployment bloc :
+
+![Description du bloc de modélisation](gallery_readme/deployment_description.png)
+
+### Airflow bloc :
+
+![Description du bloc de modélisation](gallery_readme/airflow_description.png)
