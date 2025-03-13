@@ -4,12 +4,17 @@ Ce projet implémente un système de classification multimodale (texte et image)
 
 ## Installation et Exécution
 
+0. Assurez-vous que Docker et Docker Compose sont installés sur votre machine. Vous pouvez suivre les instructions d'installation sur les sites officiels de [Docker](https://docs.docker.com/get-docker/) et [Docker Compose](https://docs.docker.com/compose/install/).
+
 1. Créer un compte sur la plateforme [challengedata](https://challengedata.ens.fr/login/)
+
 2. Télécharger le fichier [images.zip](https://challengedata.ens.fr/participants/challenges/35/download/supplementary-files) puis le placer dans le dossier `/rakuten_mlops/data/raw/`.
+
 3. Construire les conteneurs Docker :
     ```bash
     docker-compose up --build
     ```
+
 4. Il est possible que `dvc` pose problème à cause de crédentials non associés au repository. Ajoutez-les en exécutant cette commande:
     ```bash
     docker exec -it preprocessing dvc remote modify origin --local access_key_id your_token
