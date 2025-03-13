@@ -5,23 +5,16 @@ Ce projet implémente un système de classification multimodale (texte et image)
 ## Installation et Exécution
 
 1. Créer un compte sur la plateforme [challengedata](https://challengedata.ens.fr/login/)
-2. Télécharger le fichier `images.zip` en suivant le lien suivant: 
-  ```bash
-  https://challengedata.ens.fr/participants/challenges/35/download/supplementary-files
-  ``` 
-  puis le placer dans le dossier:
-  ```bash
-  /rakuten_mlops/data/raw/
-  ```
+2. Télécharger le fichier [images.zip](https://challengedata.ens.fr/participants/challenges/35/download/supplementary-files) puis le placer dans le dossier `/rakuten_mlops/data/raw/`.
 3. Construire les conteneurs Docker :
-  ```bash
-  docker-compose up --build
-  ```
+    ```bash
+    docker-compose up --build
+    ```
 4. Il est possible que `dvc` pose problème à cause de crédentials non associés au repository. Ajoutez-les en exécutant cette commande:
-  ```bash
-  docker exec -it preprocessing dvc remote modify origin --local access_key_id your_token
-  docker exec -it preprocessing dvc remote modify origin --local secret_access_key your_token 
-  ```
+    ```bash
+    docker exec -it preprocessing dvc remote modify origin --local access_key_id your_token
+    docker exec -it preprocessing dvc remote modify origin --local secret_access_key your_token 
+    ```
 
 ## Port List
 
@@ -29,8 +22,8 @@ Ce projet implémente un système de classification multimodale (texte et image)
 |------------|-------------------------|----------------------|
 | Airflow    | [0.0.0.0:5000](http://0.0.0.0:5000) | username: admin, mdp: admin |
 | MLFlow     | [0.0.0.0:8000](http://0.0.0.0:8000) | -                    |
-| User API   | [0.0.0.0:5001/docs](http://0.0.0.0:5001/docs) | -                    |
-| Model API  | [0.0.0.0:8080/docs](http://0.0.0.0:8080/docs) | -                    |
+| User prediction API   | [0.0.0.0:5001/docs](http://0.0.0.0:5001/docs) | -                    |
+| Modeling API  | [0.0.0.0:8080/docs](http://0.0.0.0:8080/docs) | -                    |
 
 ## Workflow
 
